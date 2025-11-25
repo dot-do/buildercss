@@ -1,1 +1,422 @@
 @import "tailwindcss";
+
+/* 
+ * Ontology Entity Documentation
+ * Inspired by Linear, Stripe, Vercel
+ */
+
+/* ============================================
+   CUSTOM PROPERTIES
+   ============================================ */
+
+:root {
+  --bg-primary: #0a0a0b;
+  --bg-secondary: #111113;
+  --bg-elevated: #18181b;
+  --bg-hover: rgba(255, 255, 255, 0.03);
+  
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
+  
+  --accent-cyan: #22d3ee;
+  --accent-cyan-glow: rgba(34, 211, 238, 0.15);
+  --accent-purple: #a78bfa;
+  --accent-purple-glow: rgba(167, 139, 250, 0.15);
+  --accent-green: #4ade80;
+  --accent-green-glow: rgba(74, 222, 128, 0.15);
+  --accent-amber: #fbbf24;
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  min-height: 100vh;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gradient orb - top right */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   CONTENT CONTAINER
+   ============================================ */
+
+content {
+  display: block;
+  position: relative;
+  z-index: 1;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 5rem 2rem 8rem;
+}
+
+@media (min-width: 768px) {
+  content {
+    padding: 6rem 3rem 10rem;
+  }
+}
+
+/* ============================================
+   TITLE
+   ============================================ */
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+/* Subtle glow behind title */
+h1::before {
+  content: attr(id);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(40px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================
+   DESCRIPTION
+   ============================================ */
+
+content > p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  max-width: 40rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  content > p {
+    font-size: 1.25rem;
+  }
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
+h2 {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-top: 5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+h2::before {
+  content: '';
+  width: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 1px;
+}
+
+h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-subtle), transparent);
+}
+
+content > p + h2 {
+  margin-top: 0;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Header */
+thead tr {
+  background: var(--bg-elevated);
+}
+
+th {
+  padding: 0.875rem 1.25rem;
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+th:first-child {
+  padding-left: 1.5rem;
+}
+
+th:last-child {
+  padding-right: 1.5rem;
+}
+
+/* Body rows */
+tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+td {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+td:first-child {
+  padding-left: 1.5rem;
+}
+
+td:last-child {
+  padding-right: 1.5rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   COLUMN STYLING
+   ============================================ */
+
+/* Property names - First column */
+td:first-child {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent-cyan);
+  white-space: nowrap;
+}
+
+/* Type annotations - Second column */
+td:nth-child(2) {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  color: var(--accent-purple);
+}
+
+/* Descriptions - Third column and beyond */
+td:nth-child(3),
+td:nth-child(4) {
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+/* Actions table - Result column (3rd) */
+tbody td:nth-child(3):not(:last-child) {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  color: var(--accent-green);
+}
+
+/* Events table - 2 columns, second is description */
+table:has(th:nth-child(2):last-child) td:nth-child(2) {
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   CODE
+   ============================================ */
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  padding: 0.2em 0.4em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--accent-cyan);
+}
+
+pre {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+/* ============================================
+   SELECTION & SCROLLBAR
+   ============================================ */
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  content {
+    padding: 3rem 1.25rem 5rem;
+  }
+  
+  h2 {
+    margin-top: 3.5rem;
+  }
+  
+  table {
+    font-size: 0.8125rem;
+  }
+  
+  th, td {
+    padding: 0.75rem 1rem;
+  }
+  
+  th:first-child,
+  td:first-child {
+    padding-left: 1rem;
+  }
+  
+  th:last-child,
+  td:last-child {
+    padding-right: 1rem;
+  }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+
+@media print {
+  body::before,
+  body::after {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: #111;
+  }
+  
+  h1 {
+    color: #111;
+  }
+  
+  h1::before {
+    display: none;
+  }
+  
+  table {
+    border-color: #e5e5e5;
+  }
+  
+  th, td {
+    border-color: #e5e5e5;
+  }
+  
+  td:first-child,
+  td:nth-child(2),
+  tbody td:nth-child(3):not(:last-child) {
+    color: #111;
+  }
+}
