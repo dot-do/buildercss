@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Waitlist</title>
+  <link rel="stylesheet" href="style.css" id="theme">
+  <style>
+    .theme-switcher {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+    .theme-btn {
+      padding: 0.75rem 1.25rem;
+      border: 2px solid currentColor;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+    }
+    .theme-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <strong>BuilderCSS</strong>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Build Beautiful Pages with Semantic HTML</h1>
+
+      <p>
+        Join the waitlist to get early access to BuilderCSS - a revolutionary approach to styling
+        that transforms pure semantic HTML into stunning designs without complex classes or nested divs.
+      </p>
+
+      <section>
+        <h2>Why BuilderCSS?</h2>
+
+        <ul>
+          <li>
+            <h3>Semantic First</h3>
+            <p>Write clean, accessible HTML using proper semantic elements</p>
+          </li>
+          <li>
+            <h3>Zero Complexity</h3>
+            <p>No utility classes, no component libraries, no build steps required</p>
+          </li>
+          <li>
+            <h3>Pure CSS Magic</h3>
+            <p>Watch your pages transform with just a stylesheet change</p>
+          </li>
+          <li>
+            <h3>Instant Themes</h3>
+            <p>Switch between completely different designs by swapping CSS files</p>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Get Early Access</h2>
+
+        <p>Be among the first to experience the future of web styling. Join our waitlist today.</p>
+
+        <form>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+          <label for="interest">What interests you most?</label>
+          <select id="interest" name="interest">
+            <option value="">Choose an option</option>
+            <option value="simplicity">Clean, simple HTML</option>
+            <option value="themes">Instant theme switching</option>
+            <option value="performance">No build tools needed</option>
+            <option value="accessibility">Semantic accessibility</option>
+          </select>
+
+          <button type="submit">Join Waitlist</button>
+        </form>
+      </section>
+
+      <aside>
+        <h3>Coming Soon</h3>
+        <p>
+          We're putting the finishing touches on our collection of semantic CSS themes.
+          Early access members will get exclusive templates and priority support.
+        </p>
+      </aside>
+    </article>
+  </main>
+
+  <footer>
+    <p>
+      <small>&copy; 2025 BuilderCSS. Built with semantic HTML and zero divs.</small>
+    </p>
+  </footer>
+
+  <div class="theme-switcher">
+    <button class="theme-btn" onclick="switchTheme('style.css')">Modern</button>
+    <button class="theme-btn" onclick="switchTheme('minimal.css')">Minimal</button>
+    <button class="theme-btn" onclick="switchTheme('dark.css')">Dark</button>
+  </div>
+
+  <script>
+    function switchTheme(theme) {
+      document.getElementById('theme').href = theme;
+      localStorage.setItem('theme', theme);
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.getElementById('theme').href = savedTheme;
+    }
+  </script>
+</body>
+</html>

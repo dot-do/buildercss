@@ -1,12 +1,32 @@
 {
     "name": "buildercss",
     "scripts": {
-        "build": "npx @tailwindcss/cli -i ./ontology/ontology.css -o ./dist/ontology.css"
+        "build": "npx @tailwindcss/cli -i ./ontology/ontology.css -o ./dist/ontology.css",
+        "build:backgrounds": "mkdir -p dist/backgrounds && cp components/backgrounds/*.js dist/backgrounds/"
     },
     "dependencies": {
         "tailwindcss": "^4.1.17"
     },
     "devDependencies": {
-        "@tailwindcss/cli": "^4.1.17"
-    }
+        "@tailwindcss/cli": "^4.1.17",
+        "@vitejs/plugin-react": "^5.1.1",
+        "ogl": "^1.0.11",
+        "react": "^19.2.0",
+        "react-dom": "^19.2.0",
+        "vite": "^7.2.4"
+    },
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dot-do/buildercss.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dot-do/buildercss/issues"
+    },
+    "homepage": "https://github.com/dot-do/buildercss#readme"
 }

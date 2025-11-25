@@ -1,0 +1,246 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #000;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  border-bottom: 3px solid #000;
+}
+
+nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+nav strong {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+/* Main content */
+main {
+  flex: 1;
+  padding: 4rem 2rem;
+}
+
+article {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Typography */
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -2px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 4rem 0 2rem;
+  letter-spacing: -1px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Sections */
+section {
+  margin: 4rem 0;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  margin: 3rem 0;
+}
+
+li {
+  border-left: 4px solid #000;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: #fafafa;
+}
+
+li h3 {
+  margin-top: 0;
+}
+
+li p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Forms */
+form {
+  border: 3px solid #000;
+  padding: 2.5rem;
+  margin-top: 2rem;
+  background: #fafafa;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.125rem;
+  border: 2px solid #000;
+  margin-bottom: 2rem;
+  font-family: inherit;
+  background: #fff;
+}
+
+input:focus,
+select:focus {
+  outline: 3px solid #000;
+  outline-offset: 3px;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' d='M8 12L2 6h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 3rem;
+}
+
+button {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+  background: #000;
+  border: 3px solid #000;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #fff;
+  color: #000;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Aside */
+aside {
+  background: #000;
+  color: #fff;
+  padding: 2rem;
+  margin-top: 4rem;
+}
+
+aside h3 {
+  margin-top: 0;
+  color: #fff;
+}
+
+aside p {
+  margin: 0;
+  color: #ccc;
+}
+
+/* Footer */
+footer {
+  border-top: 3px solid #000;
+  padding: 2rem;
+  text-align: center;
+  background: #fafafa;
+}
+
+footer p {
+  margin: 0;
+}
+
+small {
+  font-size: 0.875rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  nav {
+    padding: 1.5rem;
+  }
+
+  main {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+
+  nav {
+    padding: 1rem;
+  }
+}

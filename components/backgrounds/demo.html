@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Demos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: white;
+    }
+
+    .demo {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid #333;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    .label {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      z-index: 2;
+    }
+
+    :root {
+      --primary: oklch(0.7686 0.1647 70.0804);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo" data-background="gradient">
+    <span class="label">Gradient Mesh</span>
+    <div class="content">
+      <h2>Animated Gradient Mesh</h2>
+      <p>Smooth, organic gradient orbs that move and pulse. Perfect for hero sections.</p>
+    </div>
+  </div>
+
+  <div class="demo" data-background="particles">
+    <span class="label">Particles</span>
+    <div class="content">
+      <h2>Connected Particles</h2>
+      <p>Floating particles with dynamic connections. Great for tech and data-focused pages.</p>
+    </div>
+  </div>
+
+  <div class="demo" data-background="grid" data-grid-size="50">
+    <span class="label">Interactive Grid</span>
+    <div class="content">
+      <h2>Animated Grid</h2>
+      <p>Move your mouse to create ripple effects. Interactive and engaging.</p>
+    </div>
+  </div>
+
+  <div class="demo" data-background="waves">
+    <span class="label">Waves</span>
+    <div class="content">
+      <h2>Smooth Waves</h2>
+      <p>Gentle, flowing wave animation. Calming and elegant.</p>
+    </div>
+  </div>
+
+  <div class="demo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="content">
+      <h1>Pure Semantic HTML</h1>
+      <p>These backgrounds work with data attributes - no classes, no complex markup. Just add <code>data-background="gradient"</code> and include the script.</p>
+    </div>
+  </div>
+
+  <script src="../../dist/backgrounds/gradient.js"></script>
+  <script src="../../dist/backgrounds/particles.js"></script>
+  <script src="../../dist/backgrounds/grid.js"></script>
+  <script src="../../dist/backgrounds/waves.js"></script>
+</body>
+</html>
