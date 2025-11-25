@@ -1,0 +1,12 @@
+{
+    "name": "buildercss",
+    "scripts": {
+        "build": "npx @tailwindcss/cli -i ./ontology/ontology.css -o ./dist/ontology.css"
+    },
+    "dependencies": {
+        "tailwindcss": "^4.1.17"
+    },
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.1.17"
+    }
+}
