@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build the ultimate management layer - Waitlist</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <strong>waitlist.do</strong>
+      <menu>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#join">Join waitlist</a></li>
+      </menu>
+    </nav>
+  </header>
+
+  <main data-background="gradient">
+    <section id="join" class="hero-side-by-side">
+      <div>
+        <small>Introducing</small>
+        <h1>Build the ultimate management layer for agentic work</h1>
+        <p>Opinionated workflows. Enterprise rigor. Lightning-fast iteration.</p>
+
+        <form>
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Join waitlist</button>
+        </form>
+      </div>
+
+      <figure>
+        <figcaption>example.ts</figcaption>
+        <pre><code>import { on, send, ai } from 'sdk.do'
+
+// Define autonomous business logic
+export const onNewLead = on('lead.created', async (lead) => {
+  // AI-powered qualification
+  const qualified = await ai.qualify(lead)
+
+  if (qualified.score > 0.8) {
+    await send.email({
+      to: lead.email,
+      template: 'welcome-qualified',
+      data: { name: lead.name }
+    })
+  }
+
+  return qualified
+})</code></pre>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <section>
+      <div>
+        <h2>Waitlist.do</h2>
+        <p>A collection of 100+ responsive HTML templates for your startup business or side project.</p>
+
+        <ul>
+          <li><a href="https://github.com" aria-label="GitHub">GitHub</a></li>
+          <li><a href="https://twitter.com" aria-label="Twitter">Twitter</a></li>
+          <li><a href="https://linkedin.com" aria-label="LinkedIn">LinkedIn</a></li>
+        </ul>
+      </div>
+
+      <article>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="/features">Features</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/changelog">Changelog</a></li>
+          <li><a href="/docs">Docs</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Waitlist</h3>
+        <form>
+          <input type="email" placeholder="Email" required>
+          <button type="submit">Join waitlist</button>
+        </form>
+        <small>By submitting, you agree to <a href="https://dotdo.ai">Build with .do</a></small>
+      </article>
+    </section>
+
+    <aside>
+      <p><small>Waitlist.do © 2025. All rights reserved.</small></p>
+      <p><small>Powered with ❤️ by <a href="https://dotdo.ai">.do</a></small></p>
+    </aside>
+  </footer>
+
+  <script src="../dist/backgrounds/gradient.js"></script>
+  <script>
+    // Focus email input when clicking "Join waitlist" in nav
+    document.addEventListener('DOMContentLoaded', () => {
+      const navJoinLink = document.querySelector('menu li:last-child a');
+      const emailInput = document.querySelector('main input[type="email"]');
+
+      if (navJoinLink && emailInput) {
+        navJoinLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          emailInput.focus();
+          emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

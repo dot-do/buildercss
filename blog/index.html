@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Semantic HTML</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <strong>Blog</strong>
+      <menu>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#subscribe">Subscribe</a></li>
+      </menu>
+    </nav>
+  </header>
+
+  <main>
+    <header>
+      <h1>Latest Articles</h1>
+      <p>Thoughts on web development, semantic HTML, and modern CSS.</p>
+    </header>
+
+    <section>
+      <article>
+        <time datetime="2025-01-15">January 15, 2025</time>
+        <h2><a href="blog/semantic-html.html">The Power of Semantic HTML</a></h2>
+        <p>Discover how semantic HTML improves accessibility, SEO, and maintainability while reducing complexity in your web projects.</p>
+        <aside>
+          <span>HTML</span>
+          <span>Accessibility</span>
+          <span>Best Practices</span>
+        </aside>
+      </article>
+
+      <article>
+        <time datetime="2025-01-10">January 10, 2025</time>
+        <h2><a href="blog/css-variables.html">Mastering CSS Variables</a></h2>
+        <p>Learn how to use CSS custom properties to create themeable, maintainable stylesheets without preprocessors.</p>
+        <aside>
+          <span>CSS</span>
+          <span>Tutorial</span>
+        </aside>
+      </article>
+
+      <article>
+        <time datetime="2025-01-05">January 5, 2025</time>
+        <h2><a href="blog/oklch-colors.html">Understanding OKLCH Color Space</a></h2>
+        <p>Explore the benefits of OKLCH color space for creating perceptually uniform color palettes in modern browsers.</p>
+        <aside>
+          <span>CSS</span>
+          <span>Color</span>
+          <span>Design</span>
+        </aside>
+      </article>
+
+      <article>
+        <time datetime="2024-12-28">December 28, 2024</time>
+        <h2><a href="blog/no-build-tools.html">Building Without Build Tools</a></h2>
+        <p>Why modern CSS and HTML are powerful enough for most projects without the complexity of build pipelines.</p>
+        <aside>
+          <span>Development</span>
+          <span>Opinion</span>
+        </aside>
+      </article>
+    </section>
+  </main>
+
+  <footer id="subscribe">
+    <section>
+      <div>
+        <h2>Subscribe</h2>
+        <p>Get notified when new articles are published.</p>
+
+        <form>
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <article>
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#html">HTML</a></li>
+          <li><a href="#css">CSS</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+          <li><a href="#design">Design</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://github.com">GitHub</a></li>
+          <li><a href="https://twitter.com">Twitter</a></li>
+          <li><a href="https://mastodon.social">Mastodon</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <aside>
+      <p><small>&copy; 2025 Semantic Blog. All rights reserved.</small></p>
+    </aside>
+  </footer>
+</body>
+</html>

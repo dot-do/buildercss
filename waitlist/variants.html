@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waitlist Template Variants - BuilderCSS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .gallery-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .gallery-header p {
+      font-size: 1.25rem;
+      color: var(--muted-foreground);
+    }
+
+    .variant-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .variant-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .variant-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .variant-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .variant-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px color-mix(in oklch, var(--primary) 15%, transparent);
+      transform: translateY(-4px);
+    }
+
+    .variant-preview {
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .variant-preview::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+    }
+
+    .variant-info {
+      padding: 1.5rem;
+    }
+
+    .variant-card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--card-foreground);
+    }
+
+    .variant-card p {
+      font-size: 0.9375rem;
+      color: var(--muted-foreground);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .variant-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .variant-meta span {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      background: var(--muted);
+      border-radius: calc(var(--radius) - 2px);
+    }
+
+    .variant-card a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--primary-foreground);
+      background: var(--primary);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .variant-card a:hover {
+      opacity: 0.9;
+    }
+
+    .bg-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .bg-particles { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+    .bg-grid { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); }
+    .bg-waves { background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%); }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <strong>waitlist.do</strong>
+      <menu>
+        <li><a href="index.html">Simple</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </menu>
+    </nav>
+  </header>
+
+  <main>
+    <div class="gallery">
+      <div class="gallery-header">
+        <h1>Waitlist Template Variants</h1>
+        <p>Semantic HTML templates with animated backgrounds - zero utility classes, pure CSS.</p>
+      </div>
+
+      <div class="variant-grid">
+        <!-- Simple Hero -->
+        <article class="variant-card">
+          <div class="variant-preview bg-gradient"></div>
+          <div class="variant-info">
+            <h2>Simple Hero</h2>
+            <p>Clean, centered hero section with email capture form.</p>
+            <div class="variant-meta">
+              <span>Gradient Mesh</span>
+              <span>Centered</span>
+            </div>
+            <a href="index.html">View Template →</a>
+          </div>
+        </article>
+
+        <!-- Code Side-by-Side -->
+        <article class="variant-card">
+          <div class="variant-preview bg-gradient"></div>
+          <div class="variant-info">
+            <h2>Code Side-by-Side</h2>
+            <p>Hero text alongside code snippet window. Perfect for developer tools.</p>
+            <div class="variant-meta">
+              <span>Gradient Mesh</span>
+              <span>Code Window</span>
+              <span>2 Column</span>
+            </div>
+            <a href="variant-code-side.html">View Template →</a>
+          </div>
+        </article>
+
+        <!-- Code Stacked -->
+        <article class="variant-card">
+          <div class="variant-preview bg-particles"></div>
+          <div class="variant-info">
+            <h2>Code Stacked</h2>
+            <p>Hero section with code window below the fold.</p>
+            <div class="variant-meta">
+              <span>Particles</span>
+              <span>Code Window</span>
+              <span>Stacked</span>
+            </div>
+            <a href="variant-code-stacked.html">View Template →</a>
+          </div>
+        </article>
+
+        <!-- Video Side-by-Side -->
+        <article class="variant-card">
+          <div class="variant-preview bg-waves"></div>
+          <div class="variant-info">
+            <h2>Video Side-by-Side</h2>
+            <p>Hero text with embedded YouTube video alongside.</p>
+            <div class="variant-meta">
+              <span>Waves</span>
+              <span>Video</span>
+              <span>2 Column</span>
+            </div>
+            <a href="variant-video-side.html">View Template →</a>
+          </div>
+        </article>
+
+        <!-- Video Stacked -->
+        <article class="variant-card">
+          <div class="variant-preview bg-particles"></div>
+          <div class="variant-info">
+            <h2>Video Stacked</h2>
+            <p>Hero section with video embed below the fold.</p>
+            <div class="variant-meta">
+              <span>Particles</span>
+              <span>Video</span>
+              <span>Stacked</span>
+            </div>
+            <a href="variant-video-stacked.html">View Template →</a>
+          </div>
+        </article>
+
+        <!-- Image Side-by-Side -->
+        <article class="variant-card">
+          <div class="variant-preview bg-grid"></div>
+          <div class="variant-info">
+            <h2>Image Side-by-Side</h2>
+            <p>Hero text with product screenshot or image alongside.</p>
+            <div class="variant-meta">
+              <span>Grid</span>
+              <span>Image</span>
+              <span>2 Column</span>
+            </div>
+            <a href="variant-image-side.html">View Template →</a>
+          </div>
+        </article>
+
+        <!-- Image Stacked -->
+        <article class="variant-card">
+          <div class="variant-preview bg-waves"></div>
+          <div class="variant-info">
+            <h2>Image Stacked</h2>
+            <p>Hero section with featured image below the fold.</p>
+            <div class="variant-meta">
+              <span>Waves</span>
+              <span>Image</span>
+              <span>Stacked</span>
+            </div>
+            <a href="variant-image-stacked.html">View Template →</a>
+          </div>
+        </article>
+
+        <!-- Cards Layout -->
+        <article class="variant-card">
+          <div class="variant-preview bg-grid"></div>
+          <div class="variant-info">
+            <h2>Cards Layout</h2>
+            <p>Hero with multiple code snippet cards in a masonry-style grid.</p>
+            <div class="variant-meta">
+              <span>Grid</span>
+              <span>Multiple Cards</span>
+              <span>Masonry</span>
+            </div>
+            <a href="variant-cards.html">View Template →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <section>
+      <div>
+        <h2>BuilderCSS</h2>
+        <p>Semantic HTML templates with pure CSS styling. No utility classes, no build tools, no complexity.</p>
+      </div>
+
+      <article>
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="../components/backgrounds/demo.html">Backgrounds Demo</a></li>
+          <li><a href="../blog/">Blog Template</a></li>
+          <li><a href="blog.html">Blog Posts</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://github.com">GitHub</a></li>
+          <li><a href="https://twitter.com">Twitter</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <aside>
+      <p><small>BuilderCSS © 2025. Open source and free to use.</small></p>
+    </aside>
+  </footer>
+</body>
+</html>
