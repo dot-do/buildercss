@@ -1,0 +1,105 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/Testimonials
+name: Testimonials
+description: Customer testimonials/quotes section
+usedIn: [Home, Product]
+---
+
+# Testimonials
+
+A testimonials section displaying customer quotes.
+
+## Semantic Structure
+
+```html
+<section aria-label="Testimonials">
+  <header>
+    <h2>What our customers say</h2>
+  </header>
+  <div>
+    <blockquote>
+      <p>"This product changed everything for our team."</p>
+      <footer>
+        <figure><img src="avatar.jpg" alt="" /></figure>
+        <cite>
+          <strong>Jane Doe</strong>
+          <span>CEO at Company</span>
+        </cite>
+      </footer>
+    </blockquote>
+    <!-- More testimonials -->
+  </div>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Testimonials"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--muted);
+}
+
+section[aria-label="Testimonials"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Testimonials"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-6);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section[aria-label="Testimonials"] blockquote {
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+section[aria-label="Testimonials"] blockquote p {
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Testimonials"] blockquote footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+section[aria-label="Testimonials"] blockquote figure {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+section[aria-label="Testimonials"] cite {
+  font-style: normal;
+}
+
+section[aria-label="Testimonials"] cite span {
+  display: block;
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+```
+
+## Props
+
+```typescript
+interface TestimonialsProps {
+  title?: string
+  items: Array<{
+    quote: string
+    author: string
+    role: string
+    company?: string
+    avatar?: string
+  }>
+}
+```

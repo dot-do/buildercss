@@ -1,0 +1,94 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Product
+name: Product
+description: Product detail and feature page
+layout: StackedLayout
+---
+
+# Product
+
+A product page highlighting features, benefits, and use cases.
+
+## Composition
+
+```
+StackedLayout
+├── Hero (product intro)
+├── Features (detailed features)
+├── HowItWorks (steps)
+├── UseCases (examples)
+├── Testimonials (social proof)
+└── CTA (get started)
+```
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <section aria-label="Product hero">
+      <h1>Product Name</h1>
+      <p>Product tagline</p>
+      <figure>
+        <img src="screenshot.png" alt="Product screenshot" />
+      </figure>
+    </section>
+    <section aria-label="Features">
+      <h2>Features</h2>
+      <Features />
+    </section>
+    <section aria-label="How it works">
+      <h2>How It Works</h2>
+      <Steps />
+    </section>
+    <section aria-label="Use cases">
+      <h2>Use Cases</h2>
+      <UseCases />
+    </section>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main > section:first-of-type {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+}
+
+body > main > section:first-of-type figure {
+  max-width: 800px;
+  margin: var(--spacing-8) auto 0;
+}
+
+body > main > section:first-of-type img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: Product
+title: Acme Editor
+tagline: The fastest way to write code
+---
+
+<ProductHero
+  title="Acme Editor"
+  tagline="Code at the speed of thought"
+  screenshot="/editor.png"
+/>
+
+<Features items={editorFeatures} />
+
+<HowItWorks steps={gettingStarted} />
+
+<UseCases cases={useCases} />
+```

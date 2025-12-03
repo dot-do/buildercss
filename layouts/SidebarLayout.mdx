@@ -1,0 +1,108 @@
+---
+$type: Layout
+$id: https://mdx.org.ai/layouts/SidebarLayout
+name: SidebarLayout
+description: Two-column layout with left sidebar
+platforms: [web, mobile]
+---
+
+# SidebarLayout
+
+A two-column layout with a persistent left sidebar for navigation.
+
+## Semantic Structure
+
+```html
+<body>
+  <header>
+    <nav>
+      <Logo />
+      <Navigation />
+    </nav>
+  </header>
+
+  <aside>
+    <nav aria-label="Sidebar">
+      <Sidebar />
+    </nav>
+  </aside>
+
+  <main>
+    <Slot />
+  </main>
+
+  <footer>
+    <FooterContent />
+  </footer>
+</body>
+```
+
+## CSS
+
+```css
+body {
+  display: grid;
+  grid-template-columns: var(--sidebar-width, 280px) 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  min-height: 100vh;
+}
+
+body > header { grid-area: header; }
+body > aside {
+  grid-area: sidebar;
+  position: sticky;
+  top: var(--header-height, 4rem);
+  height: calc(100vh - var(--header-height, 4rem));
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+}
+body > main { grid-area: main; }
+body > footer { grid-area: footer; }
+
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+  body > aside {
+    position: fixed;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  body > aside[aria-expanded="true"] {
+    transform: translateX(0);
+  }
+}
+```
+
+## Slots
+
+| Slot | Element | Required |
+|------|---------|----------|
+| Logo | `header nav > :first-child` | Yes |
+| Navigation | `header nav > ul` | No |
+| Sidebar | `aside nav` | Yes |
+| Slot | `main` | Yes |
+| FooterContent | `footer` | No |
+
+## Mobile (React Native)
+
+```tsx
+<DrawerLayoutAndroid
+  drawerWidth={280}
+  renderNavigationView={() => <Sidebar />}
+>
+  <SafeAreaView style={{ flex: 1 }}>
+    <Header />
+    <ScrollView>{children}</ScrollView>
+  </SafeAreaView>
+</DrawerLayoutAndroid>
+```

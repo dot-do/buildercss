@@ -1,0 +1,91 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Users
+name: Users
+description: User management view
+layout: DashboardLayout
+platforms: [web]
+---
+
+# Users
+
+A user management view for listing, inviting, and managing team members.
+
+## Semantic Structure
+
+```html
+<section aria-label="User management">
+  <header>
+    <h1>Team Members</h1>
+    <menu>
+      <input type="search" placeholder="Search users..." />
+      <button>Invite User</button>
+    </menu>
+  </header>
+
+  <nav aria-label="Role filter">
+    <button aria-pressed="true">All</button>
+    <button>Admins</button>
+    <button>Members</button>
+    <button>Pending</button>
+  </nav>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Last Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <figure><img src="avatar.jpg" alt="" /></figure>
+          <div>
+            <strong>John Doe</strong>
+            <small>john@example.com</small>
+          </div>
+        </td>
+        <td>Admin</td>
+        <td><span data-status="active">Active</span></td>
+        <td><time>2 hours ago</time></td>
+        <td>
+          <menu>
+            <button>Edit</button>
+            <button>Remove</button>
+          </menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+```
+
+## CSS
+
+```css
+table td:first-child {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+table td:first-child figure {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+table td:first-child div {
+  display: flex;
+  flex-direction: column;
+}
+
+table td:first-child small {
+  color: var(--muted-foreground);
+}
+```

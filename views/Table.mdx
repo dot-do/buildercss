@@ -1,0 +1,105 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Table
+name: Table
+description: Data table with columns
+layout: DashboardLayout
+platforms: [web]
+---
+
+# Table
+
+A data table view with sortable columns, filtering, and pagination.
+
+## Semantic Structure
+
+```html
+<section aria-label="Data table">
+  <header>
+    <h1>Users</h1>
+    <menu>
+      <input type="search" placeholder="Search..." />
+      <button>Export</button>
+      <button>Add User</button>
+    </menu>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th><input type="checkbox" aria-label="Select all" /></th>
+        <th><button>Name <span>↕</span></button></th>
+        <th><button>Email <span>↕</span></button></th>
+        <th><button>Role <span>↕</span></button></th>
+        <th><button>Status <span>↕</span></button></th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+        <td>Admin</td>
+        <td><span data-status="active">Active</span></td>
+        <td>
+          <menu>
+            <button>Edit</button>
+            <button>Delete</button>
+          </menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <p>Showing 1-10 of 100</p>
+    <nav>
+      <button>Previous</button>
+      <button>Next</button>
+    </nav>
+  </footer>
+</section>
+```
+
+## CSS
+
+```css
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: var(--spacing-3);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: var(--muted);
+  font-weight: 500;
+}
+
+th button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+tr:hover td {
+  background: var(--muted);
+}
+
+[data-status="active"] {
+  color: var(--success);
+}
+
+[data-status="inactive"] {
+  color: var(--muted-foreground);
+}
+```

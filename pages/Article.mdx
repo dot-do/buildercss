@@ -1,0 +1,109 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Article
+name: Article
+description: Individual blog post or article
+layout: StackedLayout
+aliases: [BlogPost, Post]
+---
+
+# Article
+
+An individual blog post or article page.
+
+## Composition
+
+```
+StackedLayout
+├── ArticleHeader (title, meta, author)
+├── ArticleContent (prose)
+├── ArticleFooter (tags, share, related)
+└── Comments (optional)
+```
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <article>
+      <header>
+        <time datetime="2025-01-15">January 15, 2025</time>
+        <h1>Article Title</h1>
+        <p>Article description/excerpt</p>
+        <address>
+          <a href="/author/john">John Doe</a>
+        </address>
+      </header>
+      <section>
+        <!-- Prose content -->
+      </section>
+      <footer>
+        <aside aria-label="Tags">
+          <a href="/tag/react">React</a>
+          <a href="/tag/nextjs">Next.js</a>
+        </aside>
+        <nav aria-label="Share">
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+        </nav>
+      </footer>
+    </article>
+    <aside aria-label="Related posts">
+      <h2>Related Posts</h2>
+      <RelatedPosts />
+    </aside>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main > article {
+  max-width: var(--prose-width, 65ch);
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-4);
+}
+
+body > main > article > header {
+  margin-bottom: var(--spacing-8);
+}
+
+body > main > article > header time {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+body > main > article > header h1 {
+  margin: var(--spacing-2) 0;
+}
+
+body > main > article > section {
+  line-height: 1.75;
+}
+
+body > main > article > footer {
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--border);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: Article
+title: Building with MDX
+date: 2025-01-15
+author: John Doe
+tags: [mdx, react]
+---
+
+Content goes here...
+
+<RelatedPosts tags={tags} limit={3} />
+```

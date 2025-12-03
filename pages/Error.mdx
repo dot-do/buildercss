@@ -1,0 +1,55 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Error
+name: Error
+description: 500 error page
+layout: StackedLayout
+aliases: ["500"]
+---
+
+# Error
+
+A 500 error page for server errors.
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <section>
+      <h1>500</h1>
+      <p>Something went wrong</p>
+      <p>We're working on fixing this issue.</p>
+      <nav>
+        <a href="/">Go home</a>
+        <button onclick="location.reload()">Try again</button>
+      </nav>
+    </section>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+Same as NotFound - centered error display.
+
+## Usage
+
+```mdx
+---
+$type: Error
+title: Server Error
+---
+
+<ErrorDisplay
+  code={500}
+  title="Something went wrong"
+  description="We're working on fixing this issue."
+  actions={[
+    { label: 'Go home', href: '/' },
+    { label: 'Try again', onClick: 'reload' }
+  ]}
+/>
+```

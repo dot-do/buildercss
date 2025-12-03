@@ -1,0 +1,126 @@
+---
+$type: Container
+$id: https://mdx.org.ai/containers/Drawer
+name: Drawer
+description: Bottom sheet drawer (mobile pattern)
+platforms: [web, mobile]
+---
+
+# Drawer
+
+A bottom sheet drawer that slides up from the bottom, commonly used on mobile.
+
+## Semantic Structure
+
+```html
+<aside aria-modal="true" aria-labelledby="drawer-title" data-drawer>
+  <article>
+    <header>
+      <span data-handle></span>
+      <h2 id="drawer-title">Drawer Title</h2>
+    </header>
+    <section>
+      <!-- Content -->
+    </section>
+  </article>
+</aside>
+```
+
+## CSS
+
+```css
+[data-drawer] {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+[data-drawer]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-drawer] > article {
+  position: relative;
+  background: var(--background);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+[data-drawer] [data-handle] {
+  display: block;
+  width: 40px;
+  height: 4px;
+  background: var(--muted);
+  border-radius: 2px;
+  margin: var(--spacing-2) auto;
+}
+
+[data-drawer] header {
+  padding: var(--spacing-4);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+[data-drawer] section {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4);
+}
+
+/* Snap points */
+[data-drawer][data-snap="quarter"] > article { height: 25vh; }
+[data-drawer][data-snap="half"] > article { height: 50vh; }
+[data-drawer][data-snap="full"] > article { height: 90vh; }
+```
+
+## Mobile (React Native)
+
+```tsx
+import { BottomSheet } from '@gorhom/bottom-sheet'
+
+<BottomSheet
+  ref={bottomSheetRef}
+  index={-1}
+  snapPoints={['25%', '50%', '90%']}
+  enablePanDownToClose
+>
+  <View style={styles.contentContainer}>
+    <Handle />
+    {children}
+  </View>
+</BottomSheet>
+```
+
+## Gestures
+
+The drawer supports:
+- **Swipe down** to dismiss
+- **Drag handle** to resize
+- **Snap points** for common heights
+
+## Props
+
+```typescript
+interface DrawerProps {
+  open: boolean
+  onClose: () => void
+  title?: string
+  snapPoints?: ('quarter' | 'half' | 'full' | number)[]
+  initialSnap?: number
+  children: ReactNode
+}
+```

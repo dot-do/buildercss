@@ -1,0 +1,140 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Settings
+name: Settings
+description: Application settings view
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# Settings
+
+A settings view for application preferences and configuration.
+
+## Semantic Structure
+
+```html
+<article aria-label="Settings">
+  <header>
+    <h1>Settings</h1>
+  </header>
+
+  <nav aria-label="Settings sections">
+    <a href="#general" aria-current="page">General</a>
+    <a href="#appearance">Appearance</a>
+    <a href="#notifications">Notifications</a>
+    <a href="#integrations">Integrations</a>
+  </nav>
+
+  <section id="general">
+    <h2>General Settings</h2>
+    <form>
+      <label>
+        <span>Language</span>
+        <select>
+          <option>English</option>
+          <option>Spanish</option>
+        </select>
+      </label>
+      <label>
+        <span>Timezone</span>
+        <select>
+          <option>UTC</option>
+          <option>America/New_York</option>
+        </select>
+      </label>
+    </form>
+  </section>
+
+  <section id="appearance">
+    <h2>Appearance</h2>
+    <form>
+      <fieldset>
+        <legend>Theme</legend>
+        <label>
+          <input type="radio" name="theme" value="light" />
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" name="theme" value="dark" />
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" name="theme" value="system" checked />
+          <span>System</span>
+        </label>
+      </fieldset>
+    </form>
+  </section>
+
+  <section id="notifications">
+    <h2>Notification Preferences</h2>
+    <form>
+      <label>
+        <input type="checkbox" checked />
+        <span>Email notifications</span>
+      </label>
+      <label>
+        <input type="checkbox" checked />
+        <span>Push notifications</span>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <span>Weekly digest</span>
+      </label>
+    </form>
+  </section>
+</article>
+```
+
+## CSS
+
+```css
+article > nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  width: 200px;
+  position: sticky;
+  top: var(--spacing-4);
+}
+
+article > nav a {
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+}
+
+article > nav a[aria-current="page"] {
+  background: var(--muted);
+}
+
+article > section {
+  padding: var(--spacing-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-6);
+}
+
+article > section h2 {
+  margin-bottom: var(--spacing-4);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<ScrollView>
+  <Section title="General">
+    <Select label="Language" options={languages} />
+    <Select label="Timezone" options={timezones} />
+  </Section>
+  <Section title="Appearance">
+    <RadioGroup label="Theme" options={['Light', 'Dark', 'System']} />
+  </Section>
+  <Section title="Notifications">
+    <Switch label="Email notifications" />
+    <Switch label="Push notifications" />
+    <Switch label="Weekly digest" />
+  </Section>
+</ScrollView>
+```

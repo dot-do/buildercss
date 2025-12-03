@@ -1,0 +1,92 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Grid
+name: Grid
+description: Card grid view for collections
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# Grid
+
+A responsive card grid for displaying collections.
+
+## Semantic Structure
+
+```html
+<section aria-label="Items">
+  <header>
+    <h1>Items</h1>
+    <menu>
+      <button>Add</button>
+      <button aria-pressed="true" data-view="grid">Grid</button>
+      <button data-view="list">List</button>
+    </menu>
+  </header>
+
+  <section>
+    <article>
+      <figure>
+        <img src="thumbnail.jpg" alt="" />
+      </figure>
+      <header>
+        <h3><a href="/item/1">Item Name</a></h3>
+        <p>Description</p>
+      </header>
+      <footer>
+        <time>Jan 15</time>
+        <menu>
+          <button>Edit</button>
+          <button>Delete</button>
+        </menu>
+      </footer>
+    </article>
+    <!-- More cards -->
+  </section>
+</section>
+```
+
+## CSS
+
+```css
+section > section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+}
+
+section > section > article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+section > section > article figure {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+section > section > article figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section > section > article header,
+section > section > article footer {
+  padding: var(--spacing-4);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<FlatList
+  data={items}
+  numColumns={2}
+  renderItem={({ item }) => <GridCard item={item} />}
+  columnWrapperStyle={{ gap: 12 }}
+/>
+```

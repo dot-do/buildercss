@@ -1,0 +1,117 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Form
+name: Form
+description: Create/edit form view
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# Form
+
+A form view for creating or editing items.
+
+## Semantic Structure
+
+```html
+<article aria-label="Edit item">
+  <header>
+    <nav aria-label="Breadcrumb">
+      <a href="/items">Items</a> / <span>Edit</span>
+    </nav>
+    <h1>Edit Item</h1>
+  </header>
+
+  <form>
+    <fieldset>
+      <legend>Basic Information</legend>
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        <span>Description</span>
+        <textarea name="description"></textarea>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Settings</legend>
+      <label>
+        <span>Status</span>
+        <select name="status">
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </label>
+      <label>
+        <input type="checkbox" name="featured" />
+        <span>Featured</span>
+      </label>
+    </fieldset>
+
+    <footer>
+      <button type="button">Cancel</button>
+      <button type="submit">Save</button>
+    </footer>
+  </form>
+</article>
+```
+
+## CSS
+
+```css
+form {
+  max-width: 600px;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 var(--spacing-2);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-4);
+}
+
+label > span:first-child {
+  display: block;
+  font-size: var(--text-sm);
+  margin-bottom: var(--spacing-1);
+}
+
+form > footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<KeyboardAvoidingView>
+  <ScrollView>
+    <Section title="Basic Information">
+      <Input label="Name" value={name} onChange={setName} />
+      <TextArea label="Description" value={description} onChange={setDescription} />
+    </Section>
+    <Section title="Settings">
+      <Select label="Status" options={statuses} value={status} onChange={setStatus} />
+      <Switch label="Featured" value={featured} onChange={setFeatured} />
+    </Section>
+  </ScrollView>
+  <Footer>
+    <Button onPress={onCancel}>Cancel</Button>
+    <Button primary onPress={onSubmit}>Save</Button>
+  </Footer>
+</KeyboardAvoidingView>
+```

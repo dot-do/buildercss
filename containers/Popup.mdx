@@ -1,0 +1,150 @@
+---
+$type: Container
+$id: https://mdx.org.ai/containers/Popup
+name: Popup
+description: Small floating widget (Intercom-style)
+platforms: [web, mobile]
+---
+
+# Popup
+
+A small floating widget typically positioned in a corner, like Intercom-style chat widgets.
+
+## Semantic Structure
+
+```html
+<!-- Trigger button -->
+<button aria-label="Open chat" aria-expanded="false" data-popup-trigger>
+  <span>💬</span>
+</button>
+
+<!-- Popup panel -->
+<aside aria-hidden="true" data-popup>
+  <article>
+    <header>
+      <h2>Chat with us</h2>
+      <button aria-label="Close">×</button>
+    </header>
+    <section>
+      <!-- Content -->
+    </section>
+    <footer>
+      <!-- Input -->
+    </footer>
+  </article>
+</aside>
+```
+
+## CSS
+
+```css
+[data-popup-trigger] {
+  position: fixed;
+  bottom: var(--spacing-4);
+  right: var(--spacing-4);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  z-index: 90;
+  transition: transform 0.2s;
+}
+
+[data-popup-trigger]:hover {
+  transform: scale(1.1);
+}
+
+[data-popup] {
+  position: fixed;
+  bottom: calc(var(--spacing-4) + 70px);
+  right: var(--spacing-4);
+  width: 380px;
+  max-height: 600px;
+  z-index: 95;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+[data-popup][aria-hidden="true"] {
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  pointer-events: none;
+}
+
+[data-popup] > article {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+[data-popup] header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+[data-popup] section {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4);
+}
+
+[data-popup] footer {
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--border);
+}
+
+/* Mobile positioning */
+@media (max-width: 640px) {
+  [data-popup] {
+    inset: var(--spacing-2);
+    width: auto;
+    max-height: calc(100vh - var(--spacing-4));
+    bottom: calc(var(--spacing-4) + 70px);
+  }
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<>
+  <TouchableOpacity style={styles.trigger} onPress={toggle}>
+    <Icon name="chat" />
+  </TouchableOpacity>
+
+  {open && (
+    <Animated.View style={[styles.popup, { opacity: fadeAnim }]}>
+      <View style={styles.content}>
+        <PopupHeader title="Chat" onClose={close} />
+        <ScrollView>{children}</ScrollView>
+        {footer}
+      </View>
+    </Animated.View>
+  )}
+</>
+```
+
+## Props
+
+```typescript
+interface PopupProps {
+  trigger?: ReactNode
+  position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left'
+  width?: string | number
+  height?: string | number
+  children: ReactNode
+  footer?: ReactNode
+}
+```

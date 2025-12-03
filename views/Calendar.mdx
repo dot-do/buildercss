@@ -1,0 +1,108 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Calendar
+name: Calendar
+description: Calendar view for scheduling
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# Calendar
+
+A calendar view for displaying and managing events.
+
+## Semantic Structure
+
+```html
+<section aria-label="Calendar">
+  <header>
+    <h1>Calendar</h1>
+    <nav aria-label="Calendar navigation">
+      <button aria-label="Previous month">←</button>
+      <h2>January 2025</h2>
+      <button aria-label="Next month">→</button>
+    </nav>
+    <menu>
+      <button aria-pressed="true">Month</button>
+      <button>Week</button>
+      <button>Day</button>
+    </menu>
+  </header>
+
+  <table role="grid">
+    <thead>
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><time datetime="2025-01-01">1</time></td>
+        <td>
+          <time datetime="2025-01-02">2</time>
+          <article aria-label="Event">
+            <span>Meeting</span>
+          </article>
+        </td>
+        <!-- More days -->
+      </tr>
+    </tbody>
+  </table>
+</section>
+```
+
+## CSS
+
+```css
+table[role="grid"] {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table[role="grid"] th,
+table[role="grid"] td {
+  border: 1px solid var(--border);
+  padding: var(--spacing-2);
+  vertical-align: top;
+  height: 100px;
+}
+
+table[role="grid"] th {
+  background: var(--muted);
+  font-weight: 500;
+  text-align: center;
+}
+
+table[role="grid"] time {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+table[role="grid"] article {
+  margin-top: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<CalendarList
+  items={events}
+  renderItem={(item) => <EventCard event={item} />}
+  markedDates={markedDates}
+  onDayPress={handleDayPress}
+/>
+```

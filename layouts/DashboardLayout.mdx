@@ -1,0 +1,134 @@
+---
+$type: Layout
+$id: https://mdx.org.ai/layouts/DashboardLayout
+name: DashboardLayout
+description: Application shell with header and sidebar
+platforms: [web, mobile]
+---
+
+# DashboardLayout
+
+A full application shell layout for dashboards and admin interfaces.
+
+## Semantic Structure
+
+```html
+<body>
+  <header>
+    <nav>
+      <Logo />
+      <Navigation />
+      <UserMenu />
+    </nav>
+  </header>
+
+  <main>
+    <aside>
+      <nav aria-label="App navigation">
+        <Sidebar />
+      </nav>
+    </aside>
+
+    <section>
+      <header>
+        <PageTitle />
+        <Actions />
+      </header>
+      <article>
+        <Slot />
+      </article>
+    </section>
+  </main>
+</body>
+```
+
+## CSS
+
+```css
+body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body > header {
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+
+body > main {
+  display: grid;
+  grid-template-columns: var(--sidebar-width, 240px) 1fr;
+  overflow: hidden;
+}
+
+body > main > aside {
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+body > main > section {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body > main > section > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--border);
+}
+
+body > main > section > article {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-6);
+}
+
+@media (max-width: 768px) {
+  body > main { grid-template-columns: 1fr; }
+  body > main > aside {
+    position: fixed;
+    inset: 0;
+    top: var(--header-height);
+    transform: translateX(-100%);
+    z-index: 40;
+    background: var(--background);
+  }
+  body > main > aside[aria-expanded="true"] {
+    transform: translateX(0);
+  }
+}
+```
+
+## Slots
+
+| Slot | Element | Required |
+|------|---------|----------|
+| Logo | `header nav > :first-child` | Yes |
+| Navigation | `header nav > ul` | No |
+| UserMenu | `header nav > :last-child` | No |
+| Sidebar | `aside nav` | Yes |
+| PageTitle | `section > header h1` | Yes |
+| Actions | `section > header menu` | No |
+| Slot | `section > article` | Yes |
+
+## Mobile (React Native)
+
+```tsx
+<View style={{ flex: 1 }}>
+  <Header />
+  <View style={{ flex: 1, flexDirection: 'row' }}>
+    <Drawer visible={sidebarOpen}>
+      <Sidebar />
+    </Drawer>
+    <View style={{ flex: 1 }}>
+      <PageHeader title={title} actions={actions} />
+      <ScrollView>{children}</ScrollView>
+    </View>
+  </View>
+</View>
+```

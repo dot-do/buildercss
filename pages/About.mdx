@@ -1,0 +1,81 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/About
+name: About
+description: Company or personal about page
+layout: StackedLayout
+---
+
+# About
+
+An about page for company info, mission, team, and story.
+
+## Composition
+
+```
+StackedLayout
+├── Hero (section) - Mission statement
+├── Story (prose content)
+├── Team (section)
+├── Values (section)
+└── CTA (section)
+```
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <article>
+      <header>
+        <h1>About Us</h1>
+        <p>Our mission...</p>
+      </header>
+      <section aria-label="Our story">
+        <Content />
+      </section>
+    </article>
+    <section aria-label="Team">
+      <Team />
+    </section>
+    <section aria-label="Values">
+      <Values />
+    </section>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main > article {
+  max-width: var(--prose-width, 65ch);
+  margin: 0 auto;
+  padding: var(--spacing-12) var(--spacing-4);
+}
+
+body > main > article > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: About
+title: About Acme
+description: Our mission is to make building software accessible to everyone.
+---
+
+## Our Story
+
+Founded in 2020, we set out to...
+
+<Team members={team} />
+
+<Values items={values} />
+```

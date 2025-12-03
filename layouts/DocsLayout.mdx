@@ -1,0 +1,122 @@
+---
+$type: Layout
+$id: https://mdx.org.ai/layouts/DocsLayout
+name: DocsLayout
+description: Three-column documentation layout with sidebar and TOC
+platforms: [web]
+---
+
+# DocsLayout
+
+A three-column layout optimized for documentation with left sidebar navigation and right table of contents.
+
+## Semantic Structure
+
+```html
+<body>
+  <header>
+    <nav>
+      <Logo />
+      <Navigation />
+      <Search />
+    </nav>
+  </header>
+
+  <aside>
+    <nav aria-label="Documentation">
+      <Sidebar />
+    </nav>
+  </aside>
+
+  <main>
+    <article>
+      <header>
+        <Breadcrumb />
+        <Title />
+        <Description />
+      </header>
+      <section>
+        <Content />
+      </section>
+      <footer>
+        <PrevNext />
+      </footer>
+    </article>
+
+    <aside>
+      <nav aria-label="On this page">
+        <TOC />
+      </nav>
+    </aside>
+  </main>
+
+  <footer>
+    <FooterContent />
+  </footer>
+</body>
+```
+
+## CSS
+
+```css
+body {
+  display: grid;
+  grid-template-columns: var(--sidebar-width, 280px) 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  min-height: 100vh;
+}
+
+body > header { grid-area: header; }
+body > aside {
+  grid-area: sidebar;
+  position: sticky;
+  top: var(--header-height, 4rem);
+  height: calc(100vh - var(--header-height, 4rem));
+  overflow-y: auto;
+}
+body > main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr var(--toc-width, 220px);
+  gap: var(--spacing-8);
+}
+body > main > article { min-width: 0; }
+body > main > aside {
+  position: sticky;
+  top: var(--header-height, 4rem);
+  height: fit-content;
+  max-height: calc(100vh - var(--header-height, 4rem));
+  overflow-y: auto;
+}
+body > footer { grid-area: footer; }
+
+@media (max-width: 1280px) {
+  body > main { grid-template-columns: 1fr; }
+  body > main > aside { display: none; }
+}
+
+@media (max-width: 768px) {
+  body { grid-template-columns: 1fr; }
+  body > aside { display: none; }
+}
+```
+
+## Slots
+
+| Slot | Element | Required |
+|------|---------|----------|
+| Logo | `header nav > :first-child` | Yes |
+| Navigation | `header nav > ul` | No |
+| Search | `header nav input[type="search"]` | No |
+| Sidebar | `body > aside nav` | Yes |
+| Breadcrumb | `article > header nav` | No |
+| Title | `article > header h1` | Yes |
+| Description | `article > header p` | No |
+| Content | `article > section` | Yes |
+| PrevNext | `article > footer` | No |
+| TOC | `main > aside nav` | No |
+| FooterContent | `body > footer` | No |

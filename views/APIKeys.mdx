@@ -1,0 +1,81 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/APIKeys
+name: APIKeys
+description: API key management view
+layout: DashboardLayout
+platforms: [web]
+---
+
+# APIKeys
+
+A view for managing API keys and tokens.
+
+## Semantic Structure
+
+```html
+<section aria-label="API Keys">
+  <header>
+    <h1>API Keys</h1>
+    <menu>
+      <button>Create New Key</button>
+    </menu>
+  </header>
+
+  <article aria-label="Warning">
+    <p>Keep your API keys secure. Never share them publicly.</p>
+  </article>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Key</th>
+        <th>Created</th>
+        <th>Last Used</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Production</td>
+        <td>
+          <code>sk-****...****abcd</code>
+          <button aria-label="Copy">Copy</button>
+        </td>
+        <td><time>Jan 15, 2025</time></td>
+        <td><time>2 hours ago</time></td>
+        <td>
+          <menu>
+            <button>Regenerate</button>
+            <button>Delete</button>
+          </menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+```
+
+## CSS
+
+```css
+article[aria-label="Warning"] {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+table td code {
+  font-family: var(--font-mono);
+  background: var(--muted);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}
+
+table td button[aria-label="Copy"] {
+  margin-left: var(--spacing-2);
+}
+```

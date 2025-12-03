@@ -1,0 +1,104 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/Team
+name: Team
+description: Team members grid
+usedIn: [About, Careers]
+---
+
+# Team
+
+A team section displaying team member cards.
+
+## Semantic Structure
+
+```html
+<section aria-label="Team">
+  <header>
+    <h2>Meet the Team</h2>
+    <p>The people behind the product</p>
+  </header>
+  <div>
+    <article>
+      <figure>
+        <img src="avatar.jpg" alt="John Doe" />
+      </figure>
+      <h3>John Doe</h3>
+      <p>CEO & Founder</p>
+      <nav>
+        <a href="https://twitter.com/johndoe" aria-label="Twitter">X</a>
+        <a href="https://linkedin.com/in/johndoe" aria-label="LinkedIn">in</a>
+      </nav>
+    </article>
+    <!-- More team members -->
+  </div>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Team"] {
+  padding: var(--spacing-16) var(--spacing-4);
+}
+
+section[aria-label="Team"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Team"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section[aria-label="Team"] article {
+  text-align: center;
+}
+
+section[aria-label="Team"] figure {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto var(--spacing-4);
+}
+
+section[aria-label="Team"] h3 {
+  margin-bottom: var(--spacing-1);
+}
+
+section[aria-label="Team"] article > p {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+section[aria-label="Team"] nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-3);
+}
+```
+
+## Props
+
+```typescript
+interface TeamProps {
+  title?: string
+  description?: string
+  members: Array<{
+    name: string
+    role: string
+    avatar: string
+    bio?: string
+    social?: {
+      twitter?: string
+      linkedin?: string
+      github?: string
+    }
+  }>
+}
+```

@@ -1,0 +1,88 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/FAQ
+name: FAQ
+description: Frequently asked questions accordion
+usedIn: [Pricing, Product, Home]
+---
+
+# FAQ
+
+A FAQ section with expandable question/answer accordion.
+
+## Semantic Structure
+
+```html
+<section aria-label="FAQ">
+  <header>
+    <h2>Frequently Asked Questions</h2>
+  </header>
+  <div>
+    <details>
+      <summary>How do I get started?</summary>
+      <p>You can get started by signing up for a free account...</p>
+    </details>
+    <details>
+      <summary>What payment methods do you accept?</summary>
+      <p>We accept all major credit cards, PayPal, and bank transfers...</p>
+    </details>
+    <!-- More questions -->
+  </div>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="FAQ"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section[aria-label="FAQ"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="FAQ"] details {
+  border-bottom: 1px solid var(--border);
+}
+
+section[aria-label="FAQ"] summary {
+  padding: var(--spacing-4) 0;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section[aria-label="FAQ"] summary::after {
+  content: "+";
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+}
+
+section[aria-label="FAQ"] details[open] summary::after {
+  content: "−";
+}
+
+section[aria-label="FAQ"] details p {
+  padding-bottom: var(--spacing-4);
+  color: var(--muted-foreground);
+}
+```
+
+## Props
+
+```typescript
+interface FAQProps {
+  title?: string
+  items: Array<{
+    question: string
+    answer: string
+  }>
+}
+```

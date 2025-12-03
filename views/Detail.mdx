@@ -1,0 +1,107 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Detail
+name: Detail
+description: Single item detail view
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# Detail
+
+A detail view for displaying a single item with all its properties.
+
+## Semantic Structure
+
+```html
+<article aria-label="Item detail">
+  <header>
+    <nav aria-label="Breadcrumb">
+      <a href="/items">Items</a> / <span>Item Name</span>
+    </nav>
+    <h1>Item Name</h1>
+    <menu>
+      <button>Edit</button>
+      <button>Delete</button>
+    </menu>
+  </header>
+
+  <section aria-label="Properties">
+    <dl>
+      <div>
+        <dt>Status</dt>
+        <dd><span data-status="active">Active</span></dd>
+      </div>
+      <div>
+        <dt>Created</dt>
+        <dd><time>January 15, 2025</time></dd>
+      </div>
+      <div>
+        <dt>Owner</dt>
+        <dd><a href="/users/john">John Doe</a></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section aria-label="Description">
+    <h2>Description</h2>
+    <p>Item description content...</p>
+  </section>
+
+  <section aria-label="Related">
+    <h2>Related Items</h2>
+    <ul><!-- Related items --></ul>
+  </section>
+</article>
+```
+
+## CSS
+
+```css
+article > header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+article > header nav {
+  width: 100%;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+article > header h1 {
+  flex: 1;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+}
+
+dl > div {
+  padding: var(--spacing-4);
+  background: var(--muted);
+  border-radius: var(--radius-lg);
+}
+
+dt {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-1);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<ScrollView>
+  <Header title={item.name} actions={['Edit', 'Delete']} />
+  <PropertyGrid properties={item} />
+  <Section title="Description">{item.description}</Section>
+  <Section title="Related"><RelatedItems items={related} /></Section>
+</ScrollView>
+```

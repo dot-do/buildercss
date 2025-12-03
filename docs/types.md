@@ -1,6 +1,6 @@
 # Document Types
 
-BuilderCSS provides semantic HTML templates for MDXLD document types. Each type has a consistent HTML structure enabling CSS-only theming.
+BuilderCSS provides semantic HTML templates for MDXLD document types. Each type has a consistent HTML structure enabling CSS-only theming with **pure semantic selectors** - no classes needed.
 
 ## Available Types
 
@@ -16,6 +16,8 @@ BuilderCSS provides semantic HTML templates for MDXLD document types. Each type 
 | Slides | `presentation` | `/styles/slides.css` | Presentations |
 | App | `dashboard` | `/styles/app.css` | Applications |
 | Waitlist | - | `/styles/waitlist.css` | Pre-launch |
+| PricingPage | `pricing` | `/styles/pricing.css` | Pricing tiers |
+| Agent | `chat` | `/styles/agent.css` | AI chat interface |
 
 ## Website
 
@@ -23,20 +25,29 @@ Base template for general content pages.
 
 **HTML Structure:**
 ```html
-<body data-type="Website">
-  <header class="site-header">
+<body>
+  <header>
     <nav>
-      <ul><li><strong><a href="/">Site Name</a></strong></li></ul>
+      <a href="/"><strong>Site Name</strong></a>
       <ul><!-- Navigation items --></ul>
     </nav>
   </header>
-  <main class="container">
+  <main>
     <article><!-- Content --></article>
   </main>
-  <footer class="site-footer">
-    <aside><small>&copy; 2025 Site Name</small></aside>
+  <footer>
+    <p><small>&copy; 2025 Site Name</small></p>
   </footer>
 </body>
+```
+
+**CSS Selectors:**
+```css
+body > header { /* Site header */ }
+body > header nav { /* Navigation */ }
+body > main { /* Main content */ }
+body > main > article { /* Article content */ }
+body > footer { /* Site footer */ }
 ```
 
 **Frontmatter:**
@@ -149,34 +160,86 @@ tags: [tag1, tag2]
 
 ## Docs
 
-Documentation with sidebar navigation.
+Fumadocs-inspired three-column layout using **semantic selectors only** - no classes needed.
 
 **HTML Structure:**
 ```html
-<body data-type="Docs">
-  <header class="site-header">
-    <nav><!-- Docs, API, GitHub --></nav>
+<body>
+  <!-- Top nav bar -->
+  <header>
+    <nav>
+      <a href="/"><strong>Site Name</strong></a>
+      <ul>
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/api">API</a></li>
+      </ul>
+    </nav>
   </header>
-  <main class="container">
-    <aside>
-      <nav><!-- Sidebar navigation --></nav>
-    </aside>
+
+  <!-- Left sidebar -->
+  <aside>
+    <nav aria-label="Documentation">
+      <ul>
+        <li><a href="/docs/intro">Introduction</a></li>
+        <li><a href="/docs/getting-started" aria-current="page">Getting Started</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main content area -->
+  <main>
+    <!-- Article content -->
     <article>
       <header>
         <h1>Page Title</h1>
         <p>Description</p>
       </header>
-      <section><!-- Content --></section>
+      <section>
+        <!-- Prose content -->
+      </section>
+      <footer>
+        <!-- Prev/Next navigation -->
+        <a href="/prev"><small>Previous</small><span>Prev Title</span></a>
+        <a href="/next"><small>Next</small><span>Next Title</span></a>
+      </footer>
     </article>
+
+    <!-- Right TOC -->
+    <aside>
+      <nav aria-label="On this page">
+        <strong>On this page</strong>
+        <ul>
+          <li><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+        </ul>
+      </nav>
+    </aside>
   </main>
-  <footer class="site-footer"><!-- Footer --></footer>
+
+  <!-- Footer -->
+  <footer>
+    <p><small>&copy; 2025 Site Name</small></p>
+  </footer>
 </body>
 ```
 
-**CSS Features:**
-- Sticky sidebar
-- Two-column layout
-- Mobile-responsive collapse
+**CSS Selectors (semantic only):**
+```css
+body { display: grid; grid-template-areas: "header header" "sidebar main" "footer footer"; }
+body > header { grid-area: header; }
+body > aside { grid-area: sidebar; }
+body > main { grid-area: main; display: grid; grid-template-columns: 1fr 220px; }
+body > main > article { /* Main content */ }
+body > main > aside { /* Right TOC */ }
+body > footer { grid-area: footer; }
+```
+
+**Features:**
+- Three-column grid layout (sidebar | content | TOC)
+- Sticky header, sidebar, and TOC
+- Responsive: TOC hides at 1280px, sidebar at 768px
+- Previous/Next navigation in article footer
+- No classes needed - pure semantic HTML
 
 ## Collection
 

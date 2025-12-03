@@ -1,0 +1,95 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/List
+name: List
+description: Vertical list of items
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# List
+
+A vertical list view for displaying collections of items.
+
+## Semantic Structure
+
+```html
+<section aria-label="Items">
+  <header>
+    <h1>Items</h1>
+    <menu>
+      <button>Add</button>
+      <input type="search" placeholder="Search..." />
+    </menu>
+  </header>
+
+  <nav aria-label="Filters">
+    <button aria-pressed="true">All</button>
+    <button>Active</button>
+    <button>Archived</button>
+  </nav>
+
+  <ul>
+    <li>
+      <article>
+        <header>
+          <h3><a href="/item/1">Item Name</a></h3>
+          <p>Description</p>
+        </header>
+        <aside>
+          <time>Jan 15</time>
+          <span>Active</span>
+        </aside>
+      </article>
+    </li>
+    <!-- More items -->
+  </ul>
+
+  <nav aria-label="Pagination">
+    <button>Previous</button>
+    <span>Page 1 of 10</span>
+    <button>Next</button>
+  </nav>
+</section>
+```
+
+## CSS
+
+```css
+section > ul {
+  list-style: none;
+  padding: 0;
+}
+
+section > ul > li {
+  border-bottom: 1px solid var(--border);
+}
+
+section > ul > li article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+}
+
+section > ul > li article:hover {
+  background: var(--muted);
+}
+
+section > ul > li article aside {
+  display: flex;
+  gap: var(--spacing-4);
+  color: var(--muted-foreground);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<FlatList
+  data={items}
+  renderItem={({ item }) => <ListItem item={item} />}
+  ItemSeparatorComponent={Divider}
+  ListHeaderComponent={<SearchBar />}
+/>
+```

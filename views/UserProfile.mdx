@@ -1,0 +1,118 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/UserProfile
+name: UserProfile
+description: User profile and settings view
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# UserProfile
+
+A user profile view for viewing and editing user information.
+
+## Semantic Structure
+
+```html
+<article aria-label="User profile">
+  <header>
+    <figure>
+      <img src="avatar.jpg" alt="User avatar" />
+    </figure>
+    <hgroup>
+      <h1>John Doe</h1>
+      <p>john@example.com</p>
+    </hgroup>
+    <menu>
+      <button>Edit Profile</button>
+    </menu>
+  </header>
+
+  <nav aria-label="Profile sections">
+    <a href="#profile" aria-current="page">Profile</a>
+    <a href="#security">Security</a>
+    <a href="#notifications">Notifications</a>
+  </nav>
+
+  <section id="profile">
+    <h2>Profile Information</h2>
+    <form>
+      <label>
+        <span>Full Name</span>
+        <input type="text" value="John Doe" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" value="john@example.com" />
+      </label>
+      <label>
+        <span>Bio</span>
+        <textarea>Software developer...</textarea>
+      </label>
+      <button type="submit">Save Changes</button>
+    </form>
+  </section>
+</article>
+```
+
+## CSS
+
+```css
+article > header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  background: var(--muted);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-6);
+}
+
+article > header figure {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+article > header hgroup h1 {
+  margin: 0;
+}
+
+article > header hgroup p {
+  color: var(--muted-foreground);
+}
+
+article > nav {
+  display: flex;
+  gap: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--spacing-6);
+}
+
+article > nav a {
+  padding: var(--spacing-3) 0;
+  border-bottom: 2px solid transparent;
+}
+
+article > nav a[aria-current="page"] {
+  border-bottom-color: var(--primary);
+  color: var(--primary);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<ScrollView>
+  <ProfileHeader user={user} onEdit={handleEdit} />
+  <TabView
+    routes={[
+      { key: 'profile', title: 'Profile' },
+      { key: 'security', title: 'Security' },
+      { key: 'notifications', title: 'Notifications' },
+    ]}
+    renderScene={renderScene}
+  />
+</ScrollView>
+```

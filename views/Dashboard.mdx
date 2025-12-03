@@ -1,0 +1,88 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Dashboard
+name: Dashboard
+description: Overview dashboard with widgets and metrics
+layout: DashboardLayout
+platforms: [web, mobile]
+---
+
+# Dashboard
+
+An overview dashboard displaying key metrics, charts, and quick actions.
+
+## Semantic Structure
+
+```html
+<section aria-label="Dashboard">
+  <header>
+    <h1>Dashboard</h1>
+    <menu>
+      <button>Export</button>
+      <button>Settings</button>
+    </menu>
+  </header>
+
+  <section aria-label="Metrics">
+    <article aria-label="Total Users">
+      <header><span>Total Users</span></header>
+      <p>12,345</p>
+      <footer>+12% from last month</footer>
+    </article>
+    <!-- More metric cards -->
+  </section>
+
+  <section aria-label="Charts">
+    <article aria-label="Revenue">
+      <header><h3>Revenue</h3></header>
+      <figure><!-- Chart --></figure>
+    </article>
+  </section>
+
+  <section aria-label="Recent activity">
+    <article>
+      <header><h3>Recent Activity</h3></header>
+      <ul><!-- Activity list --></ul>
+    </article>
+  </section>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Metrics"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+section[aria-label="Metrics"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+}
+
+section[aria-label="Metrics"] article p {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+}
+
+section[aria-label="Charts"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-4);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<ScrollView>
+  <MetricCards data={metrics} />
+  <ChartCard title="Revenue" chart={<LineChart data={revenueData} />} />
+  <ActivityFeed items={recentActivity} />
+</ScrollView>
+```

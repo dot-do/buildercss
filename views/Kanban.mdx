@@ -1,0 +1,116 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Kanban
+name: Kanban
+description: Kanban board view
+layout: DashboardLayout
+platforms: [web]
+---
+
+# Kanban
+
+A kanban board view for project management.
+
+## Semantic Structure
+
+```html
+<section aria-label="Kanban board">
+  <header>
+    <h1>Project Board</h1>
+    <menu>
+      <button>Add Column</button>
+      <button>Filter</button>
+    </menu>
+  </header>
+
+  <div role="list" aria-label="Columns">
+    <section aria-label="Todo">
+      <header>
+        <h2>Todo</h2>
+        <span>3</span>
+        <button aria-label="Add card">+</button>
+      </header>
+      <ul>
+        <li draggable="true">
+          <article>
+            <h3>Task title</h3>
+            <p>Task description...</p>
+            <footer>
+              <span>High</span>
+              <figure><img src="avatar.jpg" alt="Assignee" /></figure>
+            </footer>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-label="In Progress">
+      <header>
+        <h2>In Progress</h2>
+        <span>2</span>
+      </header>
+      <ul><!-- Cards --></ul>
+    </section>
+
+    <section aria-label="Done">
+      <header>
+        <h2>Done</h2>
+        <span>5</span>
+      </header>
+      <ul><!-- Cards --></ul>
+    </section>
+  </div>
+</section>
+```
+
+## CSS
+
+```css
+div[role="list"] {
+  display: flex;
+  gap: var(--spacing-4);
+  overflow-x: auto;
+  padding: var(--spacing-4);
+}
+
+div[role="list"] > section {
+  flex: 0 0 300px;
+  background: var(--muted);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+}
+
+div[role="list"] > section > header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+}
+
+div[role="list"] > section > header span {
+  background: var(--background);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+}
+
+div[role="list"] ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+div[role="list"] article {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-3);
+  cursor: grab;
+}
+
+div[role="list"] article:active {
+  cursor: grabbing;
+}
+```

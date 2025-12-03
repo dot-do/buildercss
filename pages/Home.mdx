@@ -1,0 +1,84 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Home
+name: Home
+description: Landing/home page with hero and sections
+layout: StackedLayout
+alsoSection: true
+---
+
+# Home
+
+The main landing page, typically featuring a hero section followed by feature highlights.
+
+## Composition
+
+```
+StackedLayout
+├── Hero (section)
+├── Features (section)
+├── Testimonials (section)
+├── Pricing (section)
+└── CTA (section)
+```
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <section aria-label="Hero">
+      <Hero />
+    </section>
+    <section aria-label="Features">
+      <Features />
+    </section>
+    <section aria-label="Social proof">
+      <Testimonials />
+    </section>
+    <section aria-label="Pricing">
+      <Pricing />
+    </section>
+    <section aria-label="Get started">
+      <CTA />
+    </section>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main > section {
+  padding: var(--spacing-16) var(--spacing-4);
+}
+
+body > main > section:nth-child(even) {
+  background: var(--muted);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: Home
+title: Welcome to Acme
+---
+
+<Hero
+  tagline="Build faster"
+  headline="Ship your ideas in minutes"
+  cta="Get Started"
+/>
+
+<Features items={features} />
+
+<Testimonials quotes={quotes} />
+
+<Pricing tiers={tiers} />
+
+<CTA headline="Ready to start?" />
+```

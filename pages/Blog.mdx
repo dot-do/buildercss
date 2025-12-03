@@ -1,0 +1,97 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Blog
+name: Blog
+description: Blog index listing all posts
+layout: StackedLayout
+alsoSection: true
+---
+
+# Blog
+
+A blog listing page showing all posts with optional filtering.
+
+## Composition
+
+```
+StackedLayout
+├── Header (title, description)
+├── PostList (CardView or ListView)
+└── Pagination
+```
+
+## As Page vs Section
+
+**As Page**: Full blog index at `/blog`
+**As Section**: Recent posts widget on homepage
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <header>
+      <h1>Blog</h1>
+      <p>Latest news and updates</p>
+    </header>
+    <section aria-label="Posts">
+      <article>
+        <time datetime="2025-01-15">Jan 15</time>
+        <h2><a href="/blog/post">Post Title</a></h2>
+        <p>Excerpt...</p>
+        <aside><span>tag1</span></aside>
+      </article>
+      <!-- More posts -->
+    </section>
+    <nav aria-label="Pagination">
+      <a href="/blog?page=1">1</a>
+      <a href="/blog?page=2" aria-current="page">2</a>
+    </nav>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main > header {
+  padding: var(--spacing-12) var(--spacing-4);
+  text-align: center;
+}
+
+body > main > section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-6);
+  padding: var(--spacing-4);
+}
+
+body > main > section article {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+body > main > nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-8);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: Blog
+title: Our Blog
+description: Thoughts on building software
+---
+
+<PostList posts={posts} view="card" />
+
+<Pagination current={page} total={totalPages} />
+```

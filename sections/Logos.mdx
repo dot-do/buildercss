@@ -1,0 +1,76 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/Logos
+name: Logos
+description: Logo cloud for social proof
+usedIn: [Home, Product]
+---
+
+# Logos
+
+A logo cloud section for displaying customer or partner logos.
+
+## Semantic Structure
+
+```html
+<section aria-label="Trusted by">
+  <p>Trusted by leading companies</p>
+  <ul>
+    <li><img src="logo1.svg" alt="Company 1" /></li>
+    <li><img src="logo2.svg" alt="Company 2" /></li>
+    <li><img src="logo3.svg" alt="Company 3" /></li>
+    <li><img src="logo4.svg" alt="Company 4" /></li>
+    <li><img src="logo5.svg" alt="Company 5" /></li>
+  </ul>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Trusted by"] {
+  padding: var(--spacing-12) var(--spacing-4);
+  text-align: center;
+}
+
+section[aria-label="Trusted by"] > p {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+}
+
+section[aria-label="Trusted by"] ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-8);
+  list-style: none;
+  padding: 0;
+}
+
+section[aria-label="Trusted by"] img {
+  height: 32px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+section[aria-label="Trusted by"] img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+```
+
+## Props
+
+```typescript
+interface LogosProps {
+  title?: string
+  logos: Array<{
+    src: string
+    alt: string
+    href?: string
+  }>
+  grayscale?: boolean
+}
+```

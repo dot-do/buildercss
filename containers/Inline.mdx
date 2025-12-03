@@ -1,0 +1,120 @@
+---
+$type: Container
+$id: https://mdx.org.ai/containers/Inline
+name: Inline
+description: Embedded inline container within content
+platforms: [web, mobile]
+---
+
+# Inline
+
+An embedded container that flows with the surrounding content.
+
+## Semantic Structure
+
+```html
+<article>
+  <p>Some surrounding content...</p>
+
+  <aside data-inline aria-label="Embedded widget">
+    <!-- Inline content -->
+  </aside>
+
+  <p>More content continues...</p>
+</article>
+```
+
+## CSS
+
+```css
+[data-inline] {
+  margin: var(--spacing-6) 0;
+  padding: var(--spacing-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--muted);
+}
+
+/* Variants */
+[data-inline][data-variant="card"] {
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-inline][data-variant="callout"] {
+  border-left: 4px solid var(--primary);
+  background: var(--primary-foreground);
+}
+
+[data-inline][data-variant="warning"] {
+  border-left: 4px solid var(--warning);
+  background: var(--warning-bg);
+}
+
+[data-inline][data-variant="expandable"] summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Full width breakout */
+[data-inline][data-width="full"] {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+  border-radius: 0;
+}
+```
+
+## Use Cases
+
+### Chat Widget
+```html
+<aside data-inline aria-label="Chat">
+  <Chat agent="assistant" />
+</aside>
+```
+
+### Code Sandbox
+```html
+<aside data-inline aria-label="Code sandbox">
+  <Editor code={code} />
+</aside>
+```
+
+### Video Embed
+```html
+<aside data-inline aria-label="Video">
+  <video src="demo.mp4" controls />
+</aside>
+```
+
+## Mobile (React Native)
+
+```tsx
+<View style={styles.inline}>
+  {children}
+</View>
+
+const styles = StyleSheet.create({
+  inline: {
+    marginVertical: 16,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 8,
+    backgroundColor: colors.muted,
+  },
+})
+```
+
+## Props
+
+```typescript
+interface InlineProps {
+  variant?: 'default' | 'card' | 'callout' | 'warning' | 'expandable'
+  width?: 'content' | 'full'
+  collapsible?: boolean
+  defaultOpen?: boolean
+  children: ReactNode
+}
+```

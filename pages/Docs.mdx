@@ -1,0 +1,104 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Docs
+name: Docs
+description: Documentation page with sidebar and TOC
+layout: DocsLayout
+aliases: [Documentation]
+---
+
+# Docs
+
+A documentation page using the three-column DocsLayout.
+
+## Composition
+
+```
+DocsLayout
+├── Sidebar (navigation tree)
+├── Article
+│   ├── Breadcrumb
+│   ├── Title
+│   ├── Content
+│   └── PrevNext
+└── TOC (table of contents)
+```
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Top nav --></header>
+  <aside>
+    <nav aria-label="Documentation">
+      <ul>
+        <li><a href="/docs/intro">Introduction</a></li>
+        <li>
+          <details open>
+            <summary>Getting Started</summary>
+            <ul>
+              <li><a href="/docs/install" aria-current="page">Installation</a></li>
+              <li><a href="/docs/config">Configuration</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <article>
+      <header>
+        <nav aria-label="Breadcrumb">
+          <a href="/docs">Docs</a> / <a href="/docs/getting-started">Getting Started</a>
+        </nav>
+        <h1>Installation</h1>
+        <p>Learn how to install...</p>
+      </header>
+      <section>
+        <!-- Content -->
+      </section>
+      <footer>
+        <a href="/docs/intro">← Introduction</a>
+        <a href="/docs/config">Configuration →</a>
+      </footer>
+    </article>
+    <aside>
+      <nav aria-label="On this page">
+        <strong>On this page</strong>
+        <ul>
+          <li><a href="#prerequisites">Prerequisites</a></li>
+          <li><a href="#installation">Installation</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+See DocsLayout for full CSS.
+
+## Usage
+
+```mdx
+---
+$type: Docs
+title: Installation
+description: Learn how to install the package
+sidebar: getting-started
+prev: { title: Introduction, href: /docs/intro }
+next: { title: Configuration, href: /docs/config }
+---
+
+## Prerequisites
+
+You'll need Node.js 18+...
+
+## Installation
+
+```bash
+npm install @acme/package
+```
+```

@@ -1,0 +1,105 @@
+---
+$type: Layout
+$id: https://mdx.org.ai/layouts/AuthLayout
+name: AuthLayout
+description: Centered card layout for authentication pages
+platforms: [web, mobile]
+---
+
+# AuthLayout
+
+A centered layout for authentication flows (login, signup, forgot password).
+
+## Semantic Structure
+
+```html
+<body>
+  <main>
+    <article>
+      <header>
+        <Logo />
+        <Title />
+        <Description />
+      </header>
+      <section>
+        <Form />
+      </section>
+      <footer>
+        <Links />
+      </footer>
+    </article>
+  </main>
+</body>
+```
+
+## CSS
+
+```css
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--background-muted);
+}
+
+body > main {
+  width: 100%;
+  max-width: var(--auth-card-width, 400px);
+  padding: var(--spacing-4);
+}
+
+body > main > article {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+}
+
+body > main > article > header {
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
+
+body > main > article > header img,
+body > main > article > header svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--spacing-4);
+}
+
+body > main > article > section {
+  margin-bottom: var(--spacing-6);
+}
+
+body > main > article > footer {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+```
+
+## Slots
+
+| Slot | Element | Required |
+|------|---------|----------|
+| Logo | `article > header > :first-child` | No |
+| Title | `article > header h1` | Yes |
+| Description | `article > header p` | No |
+| Form | `article > section form` | Yes |
+| Links | `article > footer` | No |
+
+## Mobile (React Native)
+
+```tsx
+<SafeAreaView style={styles.container}>
+  <KeyboardAvoidingView behavior="padding" style={styles.card}>
+    <View style={styles.header}>
+      <Logo />
+      <Text style={styles.title}>{title}</Text>
+    </View>
+    <View style={styles.form}>{children}</View>
+    <View style={styles.footer}>{links}</View>
+  </KeyboardAvoidingView>
+</SafeAreaView>
+```

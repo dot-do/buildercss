@@ -1,0 +1,118 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Editor
+name: Editor
+description: Code/MDX editor view (Monaco)
+layout: FullscreenLayout
+platforms: [web]
+---
+
+# Editor
+
+A code editor view using Monaco editor for code/MDX editing.
+
+## Semantic Structure
+
+```html
+<article aria-label="Editor">
+  <header>
+    <nav aria-label="File">
+      <span>src/</span>
+      <span>components/</span>
+      <strong>Button.tsx</strong>
+    </nav>
+    <menu>
+      <button>Format</button>
+      <button>Save</button>
+      <button>Run</button>
+    </menu>
+  </header>
+
+  <main>
+    <aside aria-label="File explorer">
+      <nav><!-- File tree --></nav>
+    </aside>
+
+    <section aria-label="Editor">
+      <div id="monaco-editor"></div>
+    </section>
+
+    <aside aria-label="Output">
+      <nav>
+        <button aria-pressed="true">Console</button>
+        <button>Problems</button>
+        <button>Terminal</button>
+      </nav>
+      <pre><!-- Output --></pre>
+    </aside>
+  </main>
+
+  <footer>
+    <span>TypeScript</span>
+    <span>UTF-8</span>
+    <span>Ln 42, Col 15</span>
+  </footer>
+</article>
+```
+
+## CSS
+
+```css
+article {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+article > header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+article > main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 240px 1fr 300px;
+  overflow: hidden;
+}
+
+article > main > aside:first-child {
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+article > main > section {
+  overflow: hidden;
+}
+
+article > main > aside:last-child {
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+article > footer {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-1) var(--spacing-4);
+  background: var(--muted);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+```
+
+## Monaco Integration
+
+```tsx
+import * as monaco from 'monaco-editor'
+
+monaco.editor.create(document.getElementById('monaco-editor'), {
+  value: content,
+  language: 'typescript',
+  theme: 'vs-dark',
+  automaticLayout: true,
+})
+```

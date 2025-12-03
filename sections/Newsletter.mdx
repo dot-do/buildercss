@@ -1,0 +1,76 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/Newsletter
+name: Newsletter
+description: Email newsletter signup form
+usedIn: [Blog, Home, Article]
+---
+
+# Newsletter
+
+A newsletter signup section with email form.
+
+## Semantic Structure
+
+```html
+<section aria-label="Newsletter">
+  <h2>Subscribe to our newsletter</h2>
+  <p>Get the latest updates delivered to your inbox.</p>
+  <form>
+    <input type="email" placeholder="you@example.com" required />
+    <button type="submit">Subscribe</button>
+  </form>
+  <small>We respect your privacy. Unsubscribe at any time.</small>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Newsletter"] {
+  text-align: center;
+  padding: var(--spacing-12) var(--spacing-4);
+  background: var(--muted);
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  margin: var(--spacing-8) auto;
+}
+
+section[aria-label="Newsletter"] h2 {
+  margin-bottom: var(--spacing-2);
+}
+
+section[aria-label="Newsletter"] > p {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+section[aria-label="Newsletter"] form {
+  display: flex;
+  gap: var(--spacing-2);
+  max-width: 400px;
+  margin: 0 auto var(--spacing-4);
+}
+
+section[aria-label="Newsletter"] form input {
+  flex: 1;
+}
+
+section[aria-label="Newsletter"] small {
+  color: var(--muted-foreground);
+  font-size: var(--text-xs);
+}
+```
+
+## Props
+
+```typescript
+interface NewsletterProps {
+  title?: string
+  description?: string
+  placeholder?: string
+  buttonText?: string
+  privacyNote?: string
+  action?: string
+}
+```

@@ -1,0 +1,85 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/Hero
+name: Hero
+description: Hero section with headline, description, and CTA
+usedIn: [Home, Product, Waitlist]
+---
+
+# Hero
+
+A hero section for landing pages with headline, description, and call-to-action.
+
+## Semantic Structure
+
+```html
+<section aria-label="Hero">
+  <small>Tagline</small>
+  <h1>Main Headline</h1>
+  <p>Supporting description text that explains the value proposition.</p>
+  <form>
+    <input type="email" placeholder="Enter your email" />
+    <button type="submit">Get Started</button>
+  </form>
+  <aside>
+    <small>Join 10,000+ users</small>
+  </aside>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Hero"] {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section[aria-label="Hero"] small {
+  display: block;
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: var(--spacing-2);
+}
+
+section[aria-label="Hero"] h1 {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Hero"] > p {
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+}
+
+section[aria-label="Hero"] form {
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Hero"] aside {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+```
+
+## Props
+
+```typescript
+interface HeroProps {
+  tagline?: string
+  headline: string
+  description?: string
+  cta?: string
+  ctaHref?: string
+  showEmailForm?: boolean
+  socialProof?: string
+}
+```

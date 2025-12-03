@@ -1,0 +1,112 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Pricing
+name: Pricing
+description: Pricing tiers comparison page
+layout: StackedLayout
+alsoSection: true
+---
+
+# Pricing
+
+A page displaying pricing tiers with feature comparison.
+
+## Composition
+
+```
+StackedLayout
+├── Header (title, description)
+├── PricingTiers (section)
+├── FAQ (section)
+└── CTA (section)
+```
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <header>
+      <h1>Pricing</h1>
+      <p>Choose the plan that's right for you</p>
+    </header>
+    <section aria-label="Pricing tiers">
+      <article aria-label="Free">
+        <header>
+          <h3>Free</h3>
+          <p>$0/month</p>
+        </header>
+        <ul><!-- Features --></ul>
+        <footer><button>Get Started</button></footer>
+      </article>
+      <article aria-label="Pro" aria-current="true">
+        <header>
+          <h3>Pro</h3>
+          <p>$29/month</p>
+        </header>
+        <ul><!-- Features --></ul>
+        <footer><button>Subscribe</button></footer>
+      </article>
+      <article aria-label="Enterprise">
+        <header>
+          <h3>Enterprise</h3>
+          <p>Custom</p>
+        </header>
+        <ul><!-- Features --></ul>
+        <footer><button>Contact Sales</button></footer>
+      </article>
+    </section>
+    <section aria-label="FAQ">
+      <FAQ />
+    </section>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main > header {
+  text-align: center;
+  padding: var(--spacing-12);
+}
+
+body > main > section:first-of-type {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--spacing-8);
+}
+
+body > main > section article {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+body > main > section article[aria-current="true"] {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: Pricing
+title: Simple, transparent pricing
+---
+
+<PricingTiers tiers={[
+  { name: 'Free', price: 0, features: [...] },
+  { name: 'Pro', price: 29, featured: true, features: [...] },
+  { name: 'Enterprise', price: 'Custom', features: [...] }
+]} />
+
+<FAQ items={pricingFAQ} />
+```

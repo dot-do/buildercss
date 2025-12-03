@@ -1,0 +1,129 @@
+---
+$type: View
+$id: https://mdx.org.ai/views/Billing
+name: Billing
+description: Billing and subscription management view
+layout: DashboardLayout
+platforms: [web]
+---
+
+# Billing
+
+A view for managing billing, subscriptions, and payment methods.
+
+## Semantic Structure
+
+```html
+<section aria-label="Billing">
+  <header>
+    <h1>Billing</h1>
+  </header>
+
+  <section aria-label="Current plan">
+    <article>
+      <header>
+        <h2>Current Plan</h2>
+        <span data-plan="pro">Pro</span>
+      </header>
+      <dl>
+        <div>
+          <dt>Price</dt>
+          <dd>$29/month</dd>
+        </div>
+        <div>
+          <dt>Next billing date</dt>
+          <dd><time>February 15, 2025</time></dd>
+        </div>
+      </dl>
+      <footer>
+        <button>Change Plan</button>
+        <button>Cancel Subscription</button>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-label="Payment methods">
+    <header>
+      <h2>Payment Methods</h2>
+      <button>Add Payment Method</button>
+    </header>
+    <ul>
+      <li>
+        <span>Visa ending in 4242</span>
+        <span>Expires 12/26</span>
+        <span data-default>Default</span>
+        <menu>
+          <button>Edit</button>
+          <button>Remove</button>
+        </menu>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-label="Billing history">
+    <header>
+      <h2>Billing History</h2>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><time>Jan 15, 2025</time></td>
+          <td>Pro Plan - Monthly</td>
+          <td>$29.00</td>
+          <td><span data-status="paid">Paid</span></td>
+          <td><a href="#">Download</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Current plan"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+[data-plan="pro"] {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+}
+
+section[aria-label="Payment methods"] ul {
+  list-style: none;
+  padding: 0;
+}
+
+section[aria-label="Payment methods"] li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+[data-default] {
+  font-size: var(--text-xs);
+  background: var(--muted);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}
+```

@@ -1,0 +1,78 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/Stats
+name: Stats
+description: Key metrics/statistics section
+usedIn: [Home, About, Product]
+---
+
+# Stats
+
+A statistics section displaying key metrics.
+
+## Semantic Structure
+
+```html
+<section aria-label="Statistics">
+  <dl>
+    <div>
+      <dt>Users</dt>
+      <dd>10,000+</dd>
+    </div>
+    <div>
+      <dt>Countries</dt>
+      <dd>50+</dd>
+    </div>
+    <div>
+      <dt>Uptime</dt>
+      <dd>99.9%</dd>
+    </div>
+    <div>
+      <dt>Support</dt>
+      <dd>24/7</dd>
+    </div>
+  </dl>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Statistics"] {
+  padding: var(--spacing-12) var(--spacing-4);
+  background: var(--muted);
+}
+
+section[aria-label="Statistics"] dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-8);
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+section[aria-label="Statistics"] dt {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-1);
+}
+
+section[aria-label="Statistics"] dd {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+}
+```
+
+## Props
+
+```typescript
+interface StatsProps {
+  items: Array<{
+    label: string
+    value: string | number
+    prefix?: string
+    suffix?: string
+  }>
+}
+```

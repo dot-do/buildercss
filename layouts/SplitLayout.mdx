@@ -1,0 +1,107 @@
+---
+$type: Layout
+$id: https://mdx.org.ai/layouts/SplitLayout
+name: SplitLayout
+description: Two-column equal split layout
+platforms: [web]
+---
+
+# SplitLayout
+
+A two-column layout with equal-width panels, commonly used for comparison views or master-detail interfaces.
+
+## Semantic Structure
+
+```html
+<body>
+  <header>
+    <nav>
+      <Logo />
+      <Navigation />
+    </nav>
+  </header>
+
+  <main>
+    <section aria-label="Left panel">
+      <LeftPanel />
+    </section>
+    <section aria-label="Right panel">
+      <RightPanel />
+    </section>
+  </main>
+
+  <footer>
+    <FooterContent />
+  </footer>
+</body>
+```
+
+## CSS
+
+```css
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+body > main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+body > main > section {
+  overflow-y: auto;
+  padding: var(--spacing-6);
+}
+
+body > main > section:first-child {
+  border-right: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  body > main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  body > main > section:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+```
+
+## Variants
+
+### Resizable
+```css
+body > main {
+  display: flex;
+}
+body > main > section {
+  flex: 1;
+  min-width: 200px;
+}
+body > main > .divider {
+  width: 4px;
+  cursor: col-resize;
+  background: var(--border);
+}
+```
+
+### Asymmetric
+```css
+body > main {
+  grid-template-columns: 2fr 1fr;
+}
+```
+
+## Slots
+
+| Slot | Element | Required |
+|------|---------|----------|
+| Logo | `header nav > :first-child` | Yes |
+| Navigation | `header nav > ul` | No |
+| LeftPanel | `main > section:first-child` | Yes |
+| RightPanel | `main > section:last-child` | Yes |
+| FooterContent | `footer` | No |

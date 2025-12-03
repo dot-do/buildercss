@@ -1,0 +1,76 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/NotFound
+name: NotFound
+description: 404 error page
+layout: StackedLayout
+aliases: ["404"]
+---
+
+# NotFound
+
+A 404 page for when content is not found.
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <section>
+      <h1>404</h1>
+      <p>Page not found</p>
+      <p>The page you're looking for doesn't exist.</p>
+      <nav>
+        <a href="/">Go home</a>
+        <a href="/search">Search</a>
+      </nav>
+    </section>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 8rem);
+  text-align: center;
+}
+
+body > main > section h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+}
+
+body > main > section nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-6);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: NotFound
+title: Page Not Found
+---
+
+<ErrorDisplay
+  code={404}
+  title="Page not found"
+  description="The page you're looking for doesn't exist."
+  actions={[
+    { label: 'Go home', href: '/' },
+    { label: 'Search', href: '/search' }
+  ]}
+/>
+```

@@ -1,0 +1,105 @@
+---
+$type: Page
+$id: https://mdx.org.ai/pages/Changelog
+name: Changelog
+description: Version history and release notes
+layout: StackedLayout
+---
+
+# Changelog
+
+A changelog page showing version history.
+
+## Semantic Structure
+
+```html
+<body>
+  <header><!-- Nav --></header>
+  <main>
+    <article>
+      <header>
+        <h1>Changelog</h1>
+        <p>All notable changes to this project</p>
+      </header>
+      <section>
+        <article id="v2.0.0">
+          <header>
+            <h2>v2.0.0</h2>
+            <time datetime="2025-01-15">January 15, 2025</time>
+          </header>
+          <section aria-label="Added">
+            <h3>Added</h3>
+            <ul><li>New feature...</li></ul>
+          </section>
+          <section aria-label="Changed">
+            <h3>Changed</h3>
+            <ul><li>Updated...</li></ul>
+          </section>
+          <section aria-label="Fixed">
+            <h3>Fixed</h3>
+            <ul><li>Bug fix...</li></ul>
+          </section>
+        </article>
+        <!-- More versions -->
+      </section>
+    </article>
+  </main>
+  <footer><!-- Footer --></footer>
+</body>
+```
+
+## CSS
+
+```css
+body > main > article {
+  max-width: var(--prose-width, 65ch);
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-4);
+}
+
+body > main > article > section > article {
+  margin-bottom: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  border-bottom: 1px solid var(--border);
+}
+
+body > main > article > section > article header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+body > main > article > section > article header time {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+body > main > article h3 {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+```
+
+## Usage
+
+```mdx
+---
+$type: Changelog
+title: Changelog
+---
+
+<ChangelogEntry version="2.0.0" date="2025-01-15">
+  <Added>
+    - New feature X
+    - New feature Y
+  </Added>
+  <Changed>
+    - Updated dependency
+  </Changed>
+  <Fixed>
+    - Bug in Z
+  </Fixed>
+</ChangelogEntry>
+```

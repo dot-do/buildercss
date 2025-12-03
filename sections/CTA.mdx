@@ -1,0 +1,99 @@
+---
+$type: Section
+$id: https://mdx.org.ai/sections/CTA
+name: CTA
+description: Call-to-action section
+usedIn: [Home, Product, Article]
+---
+
+# CTA
+
+A call-to-action section to drive conversions.
+
+## Semantic Structure
+
+```html
+<section aria-label="Call to action">
+  <h2>Ready to get started?</h2>
+  <p>Join thousands of users already using our platform.</p>
+  <div>
+    <a href="/signup">Get Started Free</a>
+    <a href="/contact">Contact Sales</a>
+  </div>
+</section>
+```
+
+## CSS
+
+```css
+section[aria-label="Call to action"] {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+section[aria-label="Call to action"] h2 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Call to action"] p {
+  font-size: var(--text-lg);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-8);
+}
+
+section[aria-label="Call to action"] div {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+}
+
+section[aria-label="Call to action"] a {
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+}
+
+section[aria-label="Call to action"] a:first-child {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+section[aria-label="Call to action"] a:last-child {
+  border: 1px solid currentColor;
+}
+```
+
+## Variants
+
+### With background image
+```css
+section[aria-label="Call to action"].with-image {
+  background-image: url('bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+section[aria-label="Call to action"].with-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+```
+
+## Props
+
+```typescript
+interface CTAProps {
+  headline: string
+  description?: string
+  primaryCTA: { label: string; href: string }
+  secondaryCTA?: { label: string; href: string }
+  background?: 'primary' | 'dark' | 'image'
+  backgroundImage?: string
+}
+```

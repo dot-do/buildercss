@@ -1,0 +1,133 @@
+---
+$type: Container
+$id: https://mdx.org.ai/containers/Slideover
+name: Slideover
+description: Side panel that slides in from the edge
+platforms: [web, mobile]
+---
+
+# Slideover
+
+A panel that slides in from the edge of the screen.
+
+## Semantic Structure
+
+```html
+<aside aria-modal="true" aria-labelledby="slideover-title" data-side="right">
+  <article>
+    <header>
+      <h2 id="slideover-title">Panel Title</h2>
+      <button aria-label="Close" data-action="close">×</button>
+    </header>
+    <section>
+      <!-- Content -->
+    </section>
+    <footer>
+      <button data-action="cancel">Cancel</button>
+      <button data-action="confirm">Save</button>
+    </footer>
+  </article>
+</aside>
+```
+
+## CSS
+
+```css
+aside[aria-modal="true"] {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  z-index: 100;
+}
+
+aside[aria-modal="true"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+aside[data-side="right"] > article {
+  margin-left: auto;
+}
+
+aside[data-side="left"] > article {
+  margin-right: auto;
+}
+
+aside > article {
+  position: relative;
+  background: var(--background);
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+aside[data-side="left"] > article {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+aside > article > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+}
+
+aside > article > section {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4);
+}
+
+aside > article > footer {
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+}
+```
+
+## Mobile (React Native)
+
+```tsx
+<Animated.View style={[styles.overlay, { opacity: overlayAnim }]}>
+  <TouchableWithoutFeedback onPress={onClose}>
+    <View style={StyleSheet.absoluteFill} />
+  </TouchableWithoutFeedback>
+  <Animated.View style={[styles.panel, { transform: [{ translateX: slideAnim }] }]}>
+    <SlideoverHeader title={title} onClose={onClose} />
+    <ScrollView style={styles.content}>{children}</ScrollView>
+    {footer && <View style={styles.footer}>{footer}</View>}
+  </Animated.View>
+</Animated.View>
+```
+
+## Props
+
+```typescript
+interface SlideoverProps {
+  open: boolean
+  onClose: () => void
+  title?: string
+  side?: 'left' | 'right'
+  width?: string | number
+  children: ReactNode
+  footer?: ReactNode
+}
+```
