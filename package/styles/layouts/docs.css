@@ -1,0 +1,109 @@
+/* DocsLayout - Three-column documentation */
+
+body[data-layout="docs"] {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  min-height: 100vh;
+}
+
+body[data-layout="docs"] > header {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+body[data-layout="docs"] > aside:first-of-type {
+  grid-area: sidebar;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  padding: var(--spacing-4);
+  border-right: 1px solid var(--border);
+}
+
+body[data-layout="docs"] > main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr var(--toc-width);
+  gap: var(--spacing-8);
+  padding: var(--spacing-8);
+}
+
+body[data-layout="docs"] > main > article {
+  min-width: 0;
+}
+
+body[data-layout="docs"] > main > article > header {
+  margin-bottom: var(--spacing-8);
+}
+
+body[data-layout="docs"] > main > article > header h1 {
+  margin-bottom: var(--spacing-2);
+}
+
+body[data-layout="docs"] > main > article > section {
+  line-height: 1.7;
+}
+
+body[data-layout="docs"] > main > article > footer {
+  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+
+body[data-layout="docs"] > main > aside {
+  position: sticky;
+  top: var(--header-height);
+  height: fit-content;
+  max-height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  padding: var(--spacing-4);
+  font-size: var(--text-sm);
+}
+
+body[data-layout="docs"] > main > aside nav ul {
+  border-left: 1px solid var(--border);
+  padding-left: var(--spacing-4);
+}
+
+body[data-layout="docs"] > footer {
+  grid-area: footer;
+  background: var(--muted);
+  border-top: 1px solid var(--border);
+  padding: var(--spacing-8) var(--spacing-4);
+}
+
+@media (max-width: 1280px) {
+  body[data-layout="docs"] > main {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-layout="docs"] > main > aside {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body[data-layout="docs"] {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+  body[data-layout="docs"] > aside:first-of-type {
+    display: none;
+  }
+}

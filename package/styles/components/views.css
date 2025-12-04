@@ -1,0 +1,666 @@
+/* BuilderCSS Views - Semantic CSS for Application Views */
+
+/* ===========================================
+   Dashboard View
+   =========================================== */
+main[aria-label="Dashboard"],
+section[aria-label="Dashboard"] {
+  padding: var(--spacing-6);
+}
+
+main[aria-label="Dashboard"] > header,
+section[aria-label="Dashboard"] > header {
+  margin-bottom: var(--spacing-6);
+}
+
+main[aria-label="Dashboard"] > header h1,
+section[aria-label="Dashboard"] > header h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+/* Stats Grid */
+main[aria-label="Dashboard"] > section:first-of-type,
+[data-view="stats-grid"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+main[aria-label="Dashboard"] > section article,
+[data-view="stats-grid"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+}
+
+main[aria-label="Dashboard"] > section article h3,
+[data-view="stats-grid"] article h3 {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+main[aria-label="Dashboard"] > section article [data-value],
+[data-view="stats-grid"] article [data-value] {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+}
+
+/* ===========================================
+   Table View
+   =========================================== */
+main[aria-label="Table"],
+section[aria-label="Table"],
+[data-view="table"] {
+  padding: var(--spacing-6);
+}
+
+main[aria-label="Table"] > header,
+[data-view="table"] > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+}
+
+main[aria-label="Table"] table,
+[data-view="table"] table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+main[aria-label="Table"] th,
+main[aria-label="Table"] td,
+[data-view="table"] th,
+[data-view="table"] td {
+  text-align: left;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+}
+
+main[aria-label="Table"] th,
+[data-view="table"] th {
+  background: var(--muted);
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+main[aria-label="Table"] tr:last-child td,
+[data-view="table"] tr:last-child td {
+  border-bottom: none;
+}
+
+main[aria-label="Table"] tr:hover td,
+[data-view="table"] tr:hover td {
+  background: var(--muted);
+}
+
+/* ===========================================
+   List View
+   =========================================== */
+main[aria-label="List"],
+section[aria-label="List"],
+[data-view="list"] {
+  padding: var(--spacing-6);
+}
+
+main[aria-label="List"] > ul,
+[data-view="list"] > ul {
+  list-style: none;
+  padding: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+main[aria-label="List"] > ul > li,
+[data-view="list"] > ul > li {
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+main[aria-label="List"] > ul > li:last-child,
+[data-view="list"] > ul > li:last-child {
+  border-bottom: none;
+}
+
+main[aria-label="List"] > ul > li:hover,
+[data-view="list"] > ul > li:hover {
+  background: var(--muted);
+}
+
+/* ===========================================
+   Grid View
+   =========================================== */
+main[aria-label="Grid"],
+section[aria-label="Grid"],
+[data-view="grid"] {
+  padding: var(--spacing-6);
+}
+
+main[aria-label="Grid"] > div,
+[data-view="grid"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--spacing-4);
+}
+
+main[aria-label="Grid"] article,
+[data-view="grid"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--transition-normal);
+}
+
+main[aria-label="Grid"] article:hover,
+[data-view="grid"] article:hover {
+  box-shadow: var(--shadow-md);
+}
+
+main[aria-label="Grid"] article img,
+[data-view="grid"] article img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+main[aria-label="Grid"] article > div,
+[data-view="grid"] article > div {
+  padding: var(--spacing-4);
+}
+
+/* ===========================================
+   Form View
+   =========================================== */
+main[aria-label="Form"],
+section[aria-label="Form"],
+[data-view="form"] {
+  padding: var(--spacing-6);
+  max-width: 600px;
+}
+
+main[aria-label="Form"] form,
+[data-view="form"] form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+main[aria-label="Form"] fieldset,
+[data-view="form"] fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-6);
+}
+
+main[aria-label="Form"] legend,
+[data-view="form"] legend {
+  font-weight: 600;
+  margin-bottom: var(--spacing-4);
+}
+
+main[aria-label="Form"] label,
+[data-view="form"] label {
+  display: block;
+  margin-bottom: var(--spacing-4);
+}
+
+main[aria-label="Form"] label > span,
+[data-view="form"] label > span {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  margin-bottom: var(--spacing-1);
+}
+
+main[aria-label="Form"] input,
+main[aria-label="Form"] textarea,
+main[aria-label="Form"] select,
+[data-view="form"] input,
+[data-view="form"] textarea,
+[data-view="form"] select {
+  width: 100%;
+}
+
+main[aria-label="Form"] textarea,
+[data-view="form"] textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ===========================================
+   Detail View
+   =========================================== */
+main[aria-label="Detail"],
+section[aria-label="Detail"],
+[data-view="detail"] {
+  padding: var(--spacing-6);
+  max-width: 800px;
+}
+
+main[aria-label="Detail"] > header,
+[data-view="detail"] > header {
+  margin-bottom: var(--spacing-6);
+}
+
+main[aria-label="Detail"] > header h1,
+[data-view="detail"] > header h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-2);
+}
+
+main[aria-label="Detail"] dl,
+[data-view="detail"] dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-4);
+}
+
+main[aria-label="Detail"] dt,
+[data-view="detail"] dt {
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+main[aria-label="Detail"] dd,
+[data-view="detail"] dd {
+  margin: 0;
+}
+
+/* ===========================================
+   Settings View
+   =========================================== */
+main[aria-label="Settings"],
+section[aria-label="Settings"],
+[data-view="settings"] {
+  padding: var(--spacing-6);
+  max-width: 800px;
+}
+
+main[aria-label="Settings"] > section,
+[data-view="settings"] > section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
+}
+
+main[aria-label="Settings"] > section > header,
+[data-view="settings"] > section > header {
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+}
+
+main[aria-label="Settings"] > section > header h2,
+[data-view="settings"] > section > header h2 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+main[aria-label="Settings"] > section > header p,
+[data-view="settings"] > section > header p {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ===========================================
+   Chat View
+   =========================================== */
+main[aria-label="Chat"],
+section[aria-label="Chat"],
+[data-view="chat"] {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main[aria-label="Chat"] > section,
+[data-view="chat"] > section {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4);
+}
+
+main[aria-label="Chat"] article,
+[data-view="chat"] article {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+}
+
+main[aria-label="Chat"] article[data-sender="user"],
+[data-view="chat"] article[data-sender="user"] {
+  flex-direction: row-reverse;
+}
+
+main[aria-label="Chat"] article > div,
+[data-view="chat"] article > div {
+  max-width: 70%;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  background: var(--muted);
+}
+
+main[aria-label="Chat"] article[data-sender="user"] > div,
+[data-view="chat"] article[data-sender="user"] > div {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+main[aria-label="Chat"] > footer,
+[data-view="chat"] > footer {
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--border);
+}
+
+main[aria-label="Chat"] > footer form,
+[data-view="chat"] > footer form {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+main[aria-label="Chat"] > footer input,
+[data-view="chat"] > footer input {
+  flex: 1;
+}
+
+/* ===========================================
+   Calendar View
+   =========================================== */
+main[aria-label="Calendar"],
+section[aria-label="Calendar"],
+[data-view="calendar"] {
+  padding: var(--spacing-6);
+}
+
+main[aria-label="Calendar"] table,
+[data-view="calendar"] table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+main[aria-label="Calendar"] th,
+[data-view="calendar"] th {
+  padding: var(--spacing-3);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+main[aria-label="Calendar"] td,
+[data-view="calendar"] td {
+  padding: var(--spacing-2);
+  text-align: center;
+  vertical-align: top;
+  height: 100px;
+  border: 1px solid var(--border);
+}
+
+main[aria-label="Calendar"] td:hover,
+[data-view="calendar"] td:hover {
+  background: var(--muted);
+}
+
+main[aria-label="Calendar"] td[data-today="true"],
+[data-view="calendar"] td[data-today="true"] {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ===========================================
+   Kanban View
+   =========================================== */
+main[aria-label="Kanban"],
+section[aria-label="Kanban"],
+[data-view="kanban"] {
+  padding: var(--spacing-6);
+  overflow-x: auto;
+}
+
+main[aria-label="Kanban"] > div,
+[data-view="kanban"] > div {
+  display: flex;
+  gap: var(--spacing-4);
+  min-width: max-content;
+}
+
+main[aria-label="Kanban"] > div > section,
+[data-view="kanban"] > div > section {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--muted);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+}
+
+main[aria-label="Kanban"] > div > section > header,
+[data-view="kanban"] > div > section > header {
+  font-weight: 600;
+  margin-bottom: var(--spacing-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main[aria-label="Kanban"] article,
+[data-view="kanban"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-3);
+  margin-bottom: var(--spacing-2);
+  cursor: grab;
+}
+
+main[aria-label="Kanban"] article:hover,
+[data-view="kanban"] article:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===========================================
+   Editor View
+   =========================================== */
+main[aria-label="Editor"],
+section[aria-label="Editor"],
+[data-view="editor"] {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main[aria-label="Editor"] > header,
+[data-view="editor"] > header {
+  padding: var(--spacing-2) var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+main[aria-label="Editor"] > section,
+[data-view="editor"] > section {
+  flex: 1;
+  padding: var(--spacing-4);
+}
+
+main[aria-label="Editor"] textarea,
+[data-view="editor"] textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+main[aria-label="Editor"] textarea:focus,
+[data-view="editor"] textarea:focus {
+  outline: none;
+}
+
+/* ===========================================
+   Profile View
+   =========================================== */
+main[aria-label="Profile"],
+section[aria-label="Profile"],
+[data-view="profile"] {
+  padding: var(--spacing-6);
+  max-width: 800px;
+}
+
+main[aria-label="Profile"] > header,
+[data-view="profile"] > header {
+  display: flex;
+  gap: var(--spacing-6);
+  align-items: flex-start;
+  margin-bottom: var(--spacing-6);
+}
+
+main[aria-label="Profile"] > header img,
+[data-view="profile"] > header img {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+main[aria-label="Profile"] > header h1,
+[data-view="profile"] > header h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+main[aria-label="Profile"] > header p,
+[data-view="profile"] > header p {
+  color: var(--muted-foreground);
+}
+
+/* ===========================================
+   Users View
+   =========================================== */
+main[aria-label="Users"],
+section[aria-label="Users"],
+[data-view="users"] {
+  padding: var(--spacing-6);
+}
+
+main[aria-label="Users"] > header,
+[data-view="users"] > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+}
+
+main[aria-label="Users"] > header h1,
+[data-view="users"] > header h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+/* ===========================================
+   Billing View
+   =========================================== */
+main[aria-label="Billing"],
+section[aria-label="Billing"],
+[data-view="billing"] {
+  padding: var(--spacing-6);
+  max-width: 800px;
+}
+
+main[aria-label="Billing"] > section,
+[data-view="billing"] > section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
+}
+
+main[aria-label="Billing"] > section > header,
+[data-view="billing"] > section > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+}
+
+main[aria-label="Billing"] > section > header h2,
+[data-view="billing"] > section > header h2 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+/* ===========================================
+   API Keys View
+   =========================================== */
+main[aria-label="API Keys"],
+section[aria-label="API Keys"],
+[data-view="api-keys"] {
+  padding: var(--spacing-6);
+  max-width: 800px;
+}
+
+main[aria-label="API Keys"] > header,
+[data-view="api-keys"] > header {
+  margin-bottom: var(--spacing-6);
+}
+
+main[aria-label="API Keys"] > header h1,
+[data-view="api-keys"] > header h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-2);
+}
+
+main[aria-label="API Keys"] > header p,
+[data-view="api-keys"] > header p {
+  color: var(--muted-foreground);
+}
+
+main[aria-label="API Keys"] article,
+[data-view="api-keys"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main[aria-label="API Keys"] article h3,
+[data-view="api-keys"] article h3 {
+  font-weight: 500;
+  margin-bottom: var(--spacing-1);
+}
+
+main[aria-label="API Keys"] article code,
+[data-view="api-keys"] article code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}

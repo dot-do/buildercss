@@ -1,0 +1,116 @@
+/* BuilderCSS Variables - shadcn/ui compatible */
+
+:root {
+  /* Color System (OKLCH) */
+  --background: oklch(100% 0 0);
+  --foreground: oklch(14.1% 0.005 285.82);
+
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(14.1% 0.005 285.82);
+
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(14.1% 0.005 285.82);
+
+  --primary: oklch(20.5% 0.006 285.88);
+  --primary-foreground: oklch(98.5% 0 0);
+
+  --secondary: oklch(96.9% 0.001 286.37);
+  --secondary-foreground: oklch(20.5% 0.006 285.88);
+
+  --muted: oklch(96.9% 0.001 286.37);
+  --muted-foreground: oklch(55.1% 0.014 285.94);
+
+  --accent: oklch(96.9% 0.001 286.37);
+  --accent-foreground: oklch(20.5% 0.006 285.88);
+
+  --destructive: oklch(57.7% 0.245 27.32);
+  --destructive-foreground: oklch(98.5% 0 0);
+
+  --border: oklch(91.4% 0.004 286.32);
+  --input: oklch(91.4% 0.004 286.32);
+  --ring: oklch(70.7% 0.022 261.32);
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-24: 6rem;
+
+  /* Typography */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* Font Families */
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Layout */
+  --header-height: 4rem;
+  --sidebar-width: 280px;
+  --toc-width: 220px;
+  --content-max-width: 48rem;
+
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 200ms;
+  --transition-slow: 300ms;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(14.1% 0.005 285.82);
+    --foreground: oklch(98.5% 0 0);
+
+    --card: oklch(14.1% 0.005 285.82);
+    --card-foreground: oklch(98.5% 0 0);
+
+    --popover: oklch(14.1% 0.005 285.82);
+    --popover-foreground: oklch(98.5% 0 0);
+
+    --primary: oklch(98.5% 0 0);
+    --primary-foreground: oklch(20.5% 0.006 285.88);
+
+    --secondary: oklch(26.9% 0.006 286.03);
+    --secondary-foreground: oklch(98.5% 0 0);
+
+    --muted: oklch(26.9% 0.006 286.03);
+    --muted-foreground: oklch(70.7% 0.022 261.32);
+
+    --accent: oklch(26.9% 0.006 286.03);
+    --accent-foreground: oklch(98.5% 0 0);
+
+    --destructive: oklch(39.6% 0.141 25.72);
+    --destructive-foreground: oklch(98.5% 0 0);
+
+    --border: oklch(26.9% 0.006 286.03);
+    --input: oklch(26.9% 0.006 286.03);
+    --ring: oklch(84.2% 0.006 286.28);
+  }
+}

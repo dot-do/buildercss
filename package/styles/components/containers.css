@@ -1,0 +1,486 @@
+/* BuilderCSS Containers - Semantic CSS for Overlays and Containers */
+
+/* ===========================================
+   Modal / Dialog
+   =========================================== */
+dialog,
+[role="dialog"] {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+  background: transparent;
+  border: none;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+}
+
+dialog::backdrop,
+[role="dialog"]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+dialog > article,
+[role="dialog"] > article {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+dialog > article > header,
+[role="dialog"] > article > header {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+dialog > article > header h2,
+[role="dialog"] > article > header h2 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin: 0;
+}
+
+dialog > article > section,
+[role="dialog"] > article > section {
+  padding: var(--spacing-6);
+}
+
+dialog > article > footer,
+[role="dialog"] > article > footer {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+}
+
+/* Close button */
+dialog button[aria-label="Close"],
+[role="dialog"] button[aria-label="Close"] {
+  background: transparent;
+  color: var(--muted-foreground);
+  padding: var(--spacing-1);
+}
+
+dialog button[aria-label="Close"]:hover,
+[role="dialog"] button[aria-label="Close"]:hover {
+  color: var(--foreground);
+}
+
+/* Dialog Sizes */
+dialog[data-size="sm"] > article,
+[role="dialog"][data-size="sm"] > article {
+  max-width: 400px;
+}
+
+dialog[data-size="md"] > article,
+[role="dialog"][data-size="md"] > article {
+  max-width: 500px;
+}
+
+dialog[data-size="lg"] > article,
+[role="dialog"][data-size="lg"] > article {
+  max-width: 700px;
+}
+
+dialog[data-size="xl"] > article,
+[role="dialog"][data-size="xl"] > article {
+  max-width: 900px;
+}
+
+dialog[data-size="full"] > article,
+[role="dialog"][data-size="full"] > article {
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+/* ===========================================
+   Drawer / Slideover
+   =========================================== */
+aside[role="dialog"],
+[data-container="drawer"],
+[data-container="slideover"] {
+  position: fixed;
+  z-index: 100;
+  background: transparent;
+}
+
+/* Right drawer (default) */
+aside[role="dialog"],
+[data-container="drawer"][data-position="right"],
+[data-container="slideover"] {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+aside[role="dialog"]::before,
+[data-container="drawer"]::before,
+[data-container="slideover"]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+aside[role="dialog"] > article,
+[data-container="drawer"] > article,
+[data-container="slideover"] > article {
+  position: relative;
+  height: 100%;
+  background: var(--card);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left drawer */
+[data-container="drawer"][data-position="left"] {
+  left: 0;
+  right: auto;
+}
+
+[data-container="drawer"][data-position="left"] > article {
+  border-left: none;
+  border-right: 1px solid var(--border);
+}
+
+/* Bottom drawer */
+[data-container="drawer"][data-position="bottom"] {
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: none;
+  max-height: 90vh;
+}
+
+[data-container="drawer"][data-position="bottom"] > article {
+  border-left: none;
+  border-top: 1px solid var(--border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+aside[role="dialog"] > article > header,
+[data-container="drawer"] > article > header,
+[data-container="slideover"] > article > header {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+aside[role="dialog"] > article > section,
+[data-container="drawer"] > article > section,
+[data-container="slideover"] > article > section {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-6);
+}
+
+aside[role="dialog"] > article > footer,
+[data-container="drawer"] > article > footer,
+[data-container="slideover"] > article > footer {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ===========================================
+   Popup / Popover
+   =========================================== */
+[popover],
+[data-container="popup"],
+[data-container="popover"] {
+  position: absolute;
+  z-index: 50;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-4);
+  min-width: 200px;
+  max-width: 320px;
+}
+
+[popover]::backdrop,
+[data-container="popup"]::backdrop {
+  background: transparent;
+}
+
+/* Dropdown menu style popup */
+[popover] menu,
+[data-container="popup"] menu {
+  list-style: none;
+  padding: 0;
+  margin: calc(-1 * var(--spacing-4));
+}
+
+[popover] menu a,
+[popover] menu button,
+[data-container="popup"] menu a,
+[data-container="popup"] menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--spacing-2) var(--spacing-4);
+  background: transparent;
+  color: var(--foreground);
+  border: none;
+  border-radius: 0;
+  font-weight: normal;
+}
+
+[popover] menu a:hover,
+[popover] menu button:hover,
+[data-container="popup"] menu a:hover,
+[data-container="popup"] menu button:hover {
+  background: var(--muted);
+}
+
+[popover] menu hr,
+[data-container="popup"] menu hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--spacing-2) 0;
+}
+
+/* ===========================================
+   Fullscreen
+   =========================================== */
+[data-container="fullscreen"] {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+}
+
+[data-container="fullscreen"] > header {
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+[data-container="fullscreen"] > main,
+[data-container="fullscreen"] > section {
+  flex: 1;
+  overflow: auto;
+}
+
+[data-container="fullscreen"] > footer {
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ===========================================
+   Inline Container
+   =========================================== */
+[data-container="inline"] {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+[data-container="inline"] > header {
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+  background: var(--muted);
+}
+
+[data-container="inline"] > header h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin: 0;
+}
+
+[data-container="inline"] > section {
+  padding: var(--spacing-4);
+}
+
+[data-container="inline"] > footer {
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--border);
+  background: var(--muted);
+}
+
+/* ===========================================
+   Toast / Notification Container
+   =========================================== */
+[aria-live="polite"],
+[data-container="toasts"] {
+  position: fixed;
+  bottom: var(--spacing-4);
+  right: var(--spacing-4);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  max-width: 400px;
+}
+
+[aria-live="polite"] > article,
+[data-container="toasts"] > article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-4);
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: flex-start;
+}
+
+[aria-live="polite"] > article[data-type="success"],
+[data-container="toasts"] > article[data-type="success"] {
+  border-color: oklch(70% 0.15 145);
+}
+
+[aria-live="polite"] > article[data-type="error"],
+[data-container="toasts"] > article[data-type="error"] {
+  border-color: var(--destructive);
+}
+
+[aria-live="polite"] > article > div,
+[data-container="toasts"] > article > div {
+  flex: 1;
+}
+
+[aria-live="polite"] > article h4,
+[data-container="toasts"] > article h4 {
+  font-weight: 600;
+  margin-bottom: var(--spacing-1);
+}
+
+[aria-live="polite"] > article p,
+[data-container="toasts"] > article p {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* ===========================================
+   Command Palette
+   =========================================== */
+[data-container="command"],
+[role="combobox"] {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 600px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+[data-container="command"]::before,
+[role="combobox"]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+[data-container="command"] > header,
+[role="combobox"] > header {
+  padding: var(--spacing-3);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-container="command"] > header input,
+[role="combobox"] > header input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: var(--text-lg);
+}
+
+[data-container="command"] > header input:focus,
+[role="combobox"] > header input:focus {
+  outline: none;
+}
+
+[data-container="command"] > section,
+[role="combobox"] > section {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+[data-container="command"] [role="group"],
+[role="combobox"] [role="group"] {
+  padding: var(--spacing-2);
+}
+
+[data-container="command"] [role="group"] > header,
+[role="combobox"] [role="group"] > header {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--muted-foreground);
+  padding: var(--spacing-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+[data-container="command"] [role="option"],
+[role="combobox"] [role="option"] {
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+[data-container="command"] [role="option"]:hover,
+[data-container="command"] [role="option"][aria-selected="true"],
+[role="combobox"] [role="option"]:hover,
+[role="combobox"] [role="option"][aria-selected="true"] {
+  background: var(--muted);
+}
+
+[data-container="command"] [role="option"] kbd,
+[role="combobox"] [role="option"] kbd {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  background: var(--muted);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}

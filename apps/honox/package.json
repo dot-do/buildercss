@@ -1,0 +1,21 @@
+{
+  "name": "@buildercss/honox",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode client && vite build",
+    "preview": "wrangler pages dev",
+    "deploy": "wrangler pages deploy"
+  },
+  "dependencies": {
+    "hono": "^4.10.6",
+    "honox": "^0.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241216.0",
+    "@hono/vite-cloudflare-pages": "^0.4.2",
+    "@hono/vite-dev-server": "^0.18.1",
+    "vite": "^6.3.0",
+    "wrangler": "^4.0.0"
+  }
+}

@@ -1,0 +1,94 @@
+/* Navigation */
+
+body > header nav,
+header[role="banner"] nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-4);
+  height: var(--header-height);
+}
+
+body > header nav > :first-child,
+header[role="banner"] nav > :first-child {
+  font-weight: 700;
+  font-size: var(--text-lg);
+  text-decoration: none;
+  color: var(--foreground);
+}
+
+body > header nav > ul,
+header[role="banner"] nav > ul {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body > header nav > ul a,
+header[role="banner"] nav > ul a {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: color var(--transition-fast);
+}
+
+body > header nav > ul a:hover,
+header[role="banner"] nav > ul a:hover {
+  color: var(--foreground);
+}
+
+body > header nav input[type="search"],
+header[role="banner"] nav input[type="search"] {
+  width: 200px;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--text-sm);
+}
+
+/* Sidebar Navigation */
+body > aside nav,
+aside[role="complementary"] nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+body > aside nav a,
+aside[role="complementary"] nav a {
+  display: block;
+  padding: var(--spacing-2) var(--spacing-3);
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+body > aside nav a:hover,
+aside[role="complementary"] nav a:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+body > aside nav a[aria-current="page"],
+aside[role="complementary"] nav a[aria-current="page"] {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 500;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  body > header nav > ul {
+    display: none;
+  }
+
+  body > header nav input[type="search"] {
+    display: none;
+  }
+}

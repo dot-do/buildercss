@@ -1,0 +1,516 @@
+/* BuilderCSS Sections - Semantic CSS */
+
+/* ===========================================
+   Hero Section
+   =========================================== */
+section[aria-label="Hero"] {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section[aria-label="Hero"] > small:first-child {
+  display: block;
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: var(--spacing-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-sm);
+}
+
+section[aria-label="Hero"] h1 {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-4);
+  letter-spacing: -0.02em;
+}
+
+section[aria-label="Hero"] > p {
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section[aria-label="Hero"] form {
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+section[aria-label="Hero"] form input {
+  min-width: 280px;
+}
+
+section[aria-label="Hero"] > aside {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+/* ===========================================
+   Features Section
+   =========================================== */
+section[aria-label="Features"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+section[aria-label="Features"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Features"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Features"] > header p {
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section[aria-label="Features"] > ul,
+section[aria-label="Features"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-8);
+  list-style: none;
+  padding: 0;
+}
+
+section[aria-label="Features"] article,
+section[aria-label="Features"] li {
+  padding: var(--spacing-6);
+}
+
+section[aria-label="Features"] article h3,
+section[aria-label="Features"] li h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-2);
+}
+
+section[aria-label="Features"] article p,
+section[aria-label="Features"] li p {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+/* ===========================================
+   CTA Section
+   =========================================== */
+section[aria-label="CTA"],
+section[aria-label="Get started"] {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+section[aria-label="CTA"] h2,
+section[aria-label="Get started"] h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="CTA"] p,
+section[aria-label="Get started"] p {
+  font-size: var(--text-lg);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section[aria-label="CTA"] button,
+section[aria-label="Get started"] button {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ===========================================
+   FAQ Section
+   =========================================== */
+section[aria-label="FAQ"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section[aria-label="FAQ"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="FAQ"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="FAQ"] details {
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-4) 0;
+}
+
+section[aria-label="FAQ"] details summary {
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section[aria-label="FAQ"] details summary::after {
+  content: '+';
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+}
+
+section[aria-label="FAQ"] details[open] summary::after {
+  content: '−';
+}
+
+section[aria-label="FAQ"] details p {
+  margin-top: var(--spacing-4);
+  color: var(--muted-foreground);
+}
+
+/* ===========================================
+   Testimonials Section
+   =========================================== */
+section[aria-label="Testimonials"],
+section[aria-label="Social proof"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+section[aria-label="Testimonials"] > header,
+section[aria-label="Social proof"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Testimonials"] > header h2,
+section[aria-label="Social proof"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+}
+
+section[aria-label="Testimonials"] > div,
+section[aria-label="Social proof"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-6);
+}
+
+section[aria-label="Testimonials"] blockquote,
+section[aria-label="Social proof"] blockquote {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  margin: 0;
+}
+
+section[aria-label="Testimonials"] blockquote p,
+section[aria-label="Social proof"] blockquote p {
+  font-style: italic;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Testimonials"] blockquote footer,
+section[aria-label="Social proof"] blockquote footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+section[aria-label="Testimonials"] blockquote cite,
+section[aria-label="Social proof"] blockquote cite {
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ===========================================
+   Stats Section
+   =========================================== */
+section[aria-label="Stats"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+section[aria-label="Stats"] > div,
+section[aria-label="Stats"] > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-8);
+  text-align: center;
+  list-style: none;
+  padding: 0;
+}
+
+section[aria-label="Stats"] dl {
+  display: contents;
+}
+
+section[aria-label="Stats"] dt,
+section[aria-label="Stats"] li small {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+section[aria-label="Stats"] dd,
+section[aria-label="Stats"] li strong {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  display: block;
+  margin: var(--spacing-2) 0;
+}
+
+/* ===========================================
+   Team Section
+   =========================================== */
+section[aria-label="Team"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+section[aria-label="Team"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Team"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Team"] > div,
+section[aria-label="Team"] > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-8);
+  list-style: none;
+  padding: 0;
+}
+
+section[aria-label="Team"] article,
+section[aria-label="Team"] li {
+  text-align: center;
+}
+
+section[aria-label="Team"] img {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Team"] h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-1);
+}
+
+section[aria-label="Team"] p {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+/* ===========================================
+   Logos Section
+   =========================================== */
+section[aria-label="Logos"] {
+  padding: var(--spacing-12) var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+section[aria-label="Logos"] > p {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+}
+
+section[aria-label="Logos"] > div,
+section[aria-label="Logos"] > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-8);
+  list-style: none;
+  padding: 0;
+}
+
+section[aria-label="Logos"] img {
+  height: 32px;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: all var(--transition-normal);
+}
+
+section[aria-label="Logos"] img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* ===========================================
+   Newsletter Section
+   =========================================== */
+section[aria-label="Newsletter"] {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--muted);
+}
+
+section[aria-label="Newsletter"] h2 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-2);
+}
+
+section[aria-label="Newsletter"] > p {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+section[aria-label="Newsletter"] form {
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+section[aria-label="Newsletter"] form input {
+  flex: 1;
+}
+
+/* ===========================================
+   Pricing Section
+   =========================================== */
+section[aria-label="Pricing"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+section[aria-label="Pricing"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Pricing"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Pricing"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+section[aria-label="Pricing"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+section[aria-label="Pricing"] article[data-featured="true"] {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+}
+
+section[aria-label="Pricing"] article header h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-2);
+}
+
+section[aria-label="Pricing"] article header p {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+section[aria-label="Pricing"] article [data-price] {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  margin: var(--spacing-6) 0;
+}
+
+section[aria-label="Pricing"] article [data-price] small {
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+section[aria-label="Pricing"] article ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--spacing-6);
+}
+
+section[aria-label="Pricing"] article ul li {
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-sm);
+}
+
+section[aria-label="Pricing"] article button {
+  width: 100%;
+}
+
+/* ===========================================
+   Responsive
+   =========================================== */
+@media (max-width: 640px) {
+  section[aria-label="Hero"] h1 {
+    font-size: var(--text-4xl);
+  }
+
+  section[aria-label="Hero"] > p {
+    font-size: var(--text-lg);
+  }
+
+  section[aria-label="Hero"] form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section[aria-label="Hero"] form input {
+    width: 100%;
+    min-width: auto;
+  }
+
+  section[aria-label="Newsletter"] form {
+    flex-direction: column;
+  }
+}
