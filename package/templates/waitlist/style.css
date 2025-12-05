@@ -375,8 +375,16 @@ footer aside a:hover {
   color: var(--card-foreground);
 }
 
-/* Variant: Side-by-Side Hero */
-section.hero-side-by-side {
+/* ===========================================
+   Semantic Layout Inference
+   Layout determined by content structure using :has()
+   No data attributes required!
+   =========================================== */
+
+/* Section with media sibling (div + figure/img/video) = side-by-side */
+main > section:has(> div + figure),
+main > section:has(> div + img),
+main > section:has(> div + video) {
   max-width: 80rem;
   width: 100%;
   display: grid;
@@ -384,27 +392,44 @@ section.hero-side-by-side {
   gap: 3rem;
   align-items: center;
   padding: 3rem 1.5rem;
+  text-align: left;
 }
 
 @media (min-width: 1024px) {
-  section.hero-side-by-side {
+  main > section:has(> div + figure),
+  main > section:has(> div + img),
+  main > section:has(> div + video) {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
   }
 }
 
-section.hero-side-by-side > div {
+main > section:has(> div + figure) > div,
+main > section:has(> div + img) > div,
+main > section:has(> div + video) > div {
   max-width: 42rem;
 }
 
-section.hero-side-by-side figure {
+main > section:has(> div + figure) form,
+main > section:has(> div + img) form,
+main > section:has(> div + video) form {
+  justify-content: flex-start;
+}
+
+/* ===========================================
+   Semantic Media Styling
+   Styles inferred from semantic HTML structure
+   =========================================== */
+
+/* Code blocks (figure > figcaption + pre) */
+main > section figure:has(pre) {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
 }
 
-section.hero-side-by-side figcaption {
+main > section figcaption {
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -413,68 +438,24 @@ section.hero-side-by-side figcaption {
   font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
 }
 
-section.hero-side-by-side pre {
+main > section pre {
   margin: 0;
   padding: 1.5rem;
   overflow-x: auto;
   background: var(--card);
 }
 
-section.hero-side-by-side code {
+main > section code {
   font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
   font-size: 0.875rem;
   line-height: 1.6;
   color: var(--foreground);
 }
 
-/* Variant: Stacked Hero */
-section.hero-stacked {
-  max-width: 64rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 3rem 1.5rem;
-}
-
-section.hero-stacked > div {
-  max-width: 48rem;
-  margin: 0 auto;
-}
-
-section.hero-stacked figure {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-section.hero-stacked figcaption {
-  padding: 0.75rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted-foreground);
-  border-bottom: 1px solid var(--border);
-  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
-}
-
-section.hero-stacked pre {
-  margin: 0;
-  padding: 1.5rem;
-  overflow-x: auto;
-  background: var(--card);
-}
-
-section.hero-stacked code {
-  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--foreground);
-}
-
-section.hero-stacked video,
-section.hero-stacked iframe,
-section.hero-stacked img {
+/* Media elements (img, video, iframe) as direct children */
+main > section > img,
+main > section > video,
+main > section > iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: var(--radius);
@@ -482,64 +463,31 @@ section.hero-stacked img {
   object-fit: cover;
 }
 
-section.hero-side-by-side video,
-section.hero-side-by-side iframe,
-section.hero-side-by-side img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  object-fit: cover;
-}
+/* ===========================================
+   Semantic Cards Grid
+   Auto-detected from multiple figure children
+   =========================================== */
 
-/* Variant: Cards Layout */
-section.hero-cards {
+main > section:has(> div > figure:nth-of-type(2)) {
   max-width: 80rem;
   width: 100%;
   padding: 3rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
 }
 
-.hero-cards-header {
-  max-width: 48rem;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.cards-grid {
+main > section > div:has(> figure:nth-of-type(2)) {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
 @media (min-width: 1024px) {
-  .cards-grid {
+  main > section > div:has(> figure:nth-of-type(2)) {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
 }
 
-.cards-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.cards-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .cards-row {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.cards-grid figure {
+main > section > div:has(> figure:nth-of-type(2)) figure {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -547,33 +495,10 @@ section.hero-cards {
   transition: all 0.3s ease;
 }
 
-.cards-grid figure:hover {
+main > section > div:has(> figure:nth-of-type(2)) figure:hover {
   border-color: var(--primary);
   box-shadow: 0 4px 12px color-mix(in oklch, var(--primary) 20%, transparent);
   transform: translateY(-2px);
-}
-
-.cards-grid figcaption {
-  padding: 0.75rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted-foreground);
-  border-bottom: 1px solid var(--border);
-  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
-}
-
-.cards-grid pre {
-  margin: 0;
-  padding: 1.5rem;
-  overflow-x: auto;
-  background: var(--card);
-}
-
-.cards-grid code {
-  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--foreground);
 }
 
 /* Blog Styles */

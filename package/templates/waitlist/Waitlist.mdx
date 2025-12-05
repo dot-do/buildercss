@@ -1,0 +1,59 @@
+{/*
+  Waitlist.mdx - Semantic hero/signup section
+
+  A hero section with headline, description, and email capture form.
+  Layout is determined semantically by content structure:
+  - No media: centered layout (default)
+  - With media: side-by-side on desktop, stacked on mobile
+
+  Props:
+  - tagline: Small text above headline
+  - headline: Main h1 text
+  - description: Paragraph below headline
+  - ctaText: Button text
+  - placeholder: Input placeholder
+  - media: Optional JSX for image/video/code block
+*/}
+
+export const Waitlist = ({
+  tagline = '',
+  headline = '',
+  description = '',
+  ctaText = 'Join waitlist',
+  placeholder = 'Enter your email',
+  media = null
+}) => (
+  <section id="join">
+    <div>
+      {tagline && <small>{tagline}</small>}
+      <h1>{headline}</h1>
+      {description && <p>{description}</p>}
+
+      <form>
+        <input type="email" placeholder={placeholder} required />
+        <button type="submit">{ctaText}</button>
+      </form>
+    </div>
+
+    {media}
+  </section>
+)
+
+{/* Media components for different content types */}
+
+export const CodeBlock = ({ filename = 'example.ts', children }) => (
+  <figure>
+    <figcaption>{filename}</figcaption>
+    <pre><code>{children}</code></pre>
+  </figure>
+)
+
+export const ImageMedia = ({ src, alt = 'Product image' }) => (
+  <img src={src} alt={alt} />
+)
+
+export const VideoMedia = ({ src }) => (
+  <video src={src} autoPlay loop muted playsInline />
+)
+
+export default Waitlist

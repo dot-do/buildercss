@@ -12,24 +12,30 @@
     },
     "./styles": "./styles/index.css",
     "./styles/*": "./styles/*",
-    "./layouts/*": "./layouts/*.mdx",
-    "./pages/*": "./pages/*.mdx",
-    "./views/*": "./views/*.mdx",
-    "./components/sections/*": "./components/sections/*.mdx",
-    "./components/containers/*": "./components/containers/*.mdx"
+    "./templates/waitlist": {
+      "types": "./dist/templates/waitlist/index.d.ts",
+      "import": "./dist/templates/waitlist/index.js"
+    },
+    "./templates/waitlist/*": {
+      "types": "./dist/templates/waitlist/*.d.ts",
+      "import": "./dist/templates/waitlist/*.js"
+    },
+    "./templates/ontology/*": "./templates/ontology/*",
+    "./templates/ontology/Layout": "./templates/ontology/Layout.mdx",
+    "./templates/ontology/Thing": "./templates/ontology/Thing.mdx",
+    "./templates/ontology/Things": "./templates/ontology/Things.mdx"
   },
   "files": [
     "dist",
     "styles",
-    "layouts",
-    "pages",
-    "views",
-    "components"
+    "templates"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsup && pnpm build:types",
+    "build:types": "cp templates/waitlist/*.d.ts dist/templates/waitlist/",
     "build:css": "cat styles/variables.css styles/base.css styles/layouts/*.css styles/components/*.css > dist/buildercss.css",
-    "dev": "tsc --watch",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -55,14 +61,14 @@
   },
   "homepage": "https://buildercss.dev",
   "devDependencies": {
+    "@mdx-js/esbuild": "^3.1.0",
+    "@types/mdx": "^2.0.13",
+    "@types/react": "^19.0.0",
+    "tsup": "^8.3.5",
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "@mdx-js/mdx": ">=3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@mdx-js/mdx": {
-      "optional": true
-    }
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   }
 }

@@ -1,0 +1,26 @@
+/* Import core BuilderCSS styles */
+@import '../../package/styles/variables.css';
+@import '../../package/styles/base.css';
+@import '../../package/styles/layouts/stacked.css';
+@import '../../package/styles/layouts/sidebar.css';
+@import '../../package/styles/layouts/docs.css';
+@import '../../package/styles/components/nav.css';
+@import '../../package/styles/components/sections.css';
+@import '../../package/styles/components/views.css';
+@import '../../package/styles/components/containers.css';
+
+/* Storybook-specific overrides */
+.sb-show-main.sb-main-padded {
+  padding: 0 !important;
+}
+
+/* Theme toggle support */
+:root[data-theme="dark"] {
+  --background: oklch(0.2046 0 0);
+  --foreground: oklch(0.9219 0 0);
+  --card: oklch(0.2686 0 0);
+  --card-foreground: oklch(0.9219 0 0);
+  --muted: oklch(0.2393 0 0);
+  --muted-foreground: oklch(0.7155 0 0);
+  --border: oklch(0.3715 0 0);
+}

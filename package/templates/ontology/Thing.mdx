@@ -1,0 +1,168 @@
+export const meta = {
+  $type: 'Component',
+  $id: 'https://mdx.org.ai/templates/ontology/Thing',
+  name: 'Thing',
+  description: `Detail view for a single ontology entity using semantic HTML:
+- h1: Entity name
+- p (first): Entity description
+- h2: Section headers (Properties, Relationships, etc.)
+- table: Data tables with thead/tbody structure`,
+  props: {
+    name: 'The name of the entity (e.g., "Business", "Product", "Person")',
+    description: 'A brief description of what this entity represents',
+    properties: [
+      { name: 'Property name in camelCase (e.g., "foundedDate")' },
+      { type: 'Data type (e.g., "string", "number", "URL", "boolean")' },
+      { description: 'Human-readable description of the property' },
+    ],
+    relationships: [
+      { name: 'Relationship name in camelCase (e.g., "hasProduct")' },
+      { target: 'The entity type this relationship points to' },
+      { description: 'Human-readable description of the relationship' },
+    ],
+    searches: [
+      { name: 'Search name (e.g., "OKRs", "recentTransactions")' },
+      { parameters: 'Parameters accepted by this search' },
+      { description: 'What this search returns' },
+    ],
+    actions: [
+      { name: 'Action name in camelCase (e.g., "launchProduct")' },
+      { object: 'The type of object this action operates on' },
+      { result: 'The type returned after performing this action' },
+      { description: 'Human-readable description of the action' },
+    ],
+    events: [
+      { name: 'Event name in camelCase (e.g., "productLaunched")' },
+      { description: 'When this event occurs' },
+    ],
+  },
+}
+
+export default function Thing({ name, description, properties, relationships, searches, actions, events }) {
+  return (
+    <>
+      <h1>{name}</h1>
+      <p>{description}</p>
+
+      {properties && properties.length > 0 && (
+        <section aria-labelledby="properties">
+          <h2 id="properties">Properties</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {properties.map((prop, i) => (
+                <tr key={i}>
+                  <td>{prop.name}</td>
+                  <td>{prop.type}</td>
+                  <td>{prop.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
+      {relationships && relationships.length > 0 && (
+        <section aria-labelledby="relationships">
+          <h2 id="relationships">Relationships</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Relationship</th>
+                <th>Target Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {relationships.map((rel, i) => (
+                <tr key={i}>
+                  <td>{rel.name}</td>
+                  <td>{rel.target}</td>
+                  <td>{rel.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
+      {searches && searches.length > 0 && (
+        <section aria-labelledby="searches">
+          <h2 id="searches">Searches</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Search</th>
+                <th>Parameters</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {searches.map((search, i) => (
+                <tr key={i}>
+                  <td>{search.name}</td>
+                  <td>{search.parameters}</td>
+                  <td>{search.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
+      {actions && actions.length > 0 && (
+        <section aria-labelledby="actions">
+          <h2 id="actions">Actions</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Object</th>
+                <th>Result</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {actions.map((action, i) => (
+                <tr key={i}>
+                  <td>{action.name}</td>
+                  <td>{action.object}</td>
+                  <td>{action.result}</td>
+                  <td>{action.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
+      {events && events.length > 0 && (
+        <section aria-labelledby="events">
+          <h2 id="events">Events</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {events.map((event, i) => (
+                <tr key={i}>
+                  <td>{event.name}</td>
+                  <td>{event.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+    </>
+  )
+}

@@ -1,0 +1,129 @@
+{/* Blog.mdx */}
+import { Meta, Canvas, Controls, Story } from '@storybook/blocks'
+import * as BlogIndexStories from './BlogIndex.stories'
+import * as BlogPostStories from './BlogPost.stories'
+
+<Meta title="Templates/Blog/Documentation" />
+
+# Blog Templates
+
+A collection of blog templates with semantic HTML structure for article listings and individual posts.
+
+## Blog Index
+
+The blog index template displays a list of articles with metadata and tags.
+
+<Canvas of={BlogIndexStories.Default} />
+
+### Semantic Structure
+
+```html
+<header>
+  <nav>
+    <strong>Brand</strong>
+    <menu>
+      <li><a href="/">Home</a></li>
+      <li><a href="#subscribe">Subscribe</a></li>
+    </menu>
+  </nav>
+</header>
+
+<main>
+  <header>
+    <h1>Page Title</h1>
+    <p>Page description</p>
+  </header>
+
+  <section>
+    <article>
+      <time datetime="2025-01-15">January 15, 2025</time>
+      <h2><a href="/blog/post">Article Title</a></h2>
+      <p>Article description...</p>
+      <aside>
+        <span>Tag 1</span>
+        <span>Tag 2</span>
+      </aside>
+    </article>
+    <!-- More articles... -->
+  </section>
+</main>
+
+<footer>
+  <!-- Footer content -->
+</footer>
+```
+
+## Blog Post
+
+The blog post template displays a full article with rich content formatting.
+
+<Canvas of={BlogPostStories.Default} />
+
+### Post Content Structure
+
+```html
+<article class="post">
+  <header>
+    <time datetime="2025-01-15">January 15, 2025</time>
+    <h1>Post Title</h1>
+    <p>Post description</p>
+    <aside>
+      <span>Tag</span>
+    </aside>
+  </header>
+
+  <p>Content paragraph...</p>
+
+  <h2>Section Heading</h2>
+  <p>More content...</p>
+
+  <pre><code>Code example...</code></pre>
+
+  <blockquote>
+    <p>Quote text...</p>
+  </blockquote>
+</article>
+```
+
+## Typography
+
+The blog template uses a serif font for body content with sans-serif headings:
+
+```css
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+}
+
+body {
+  font-family: var(--font-serif);
+}
+
+h1, h2, h3, nav, footer {
+  font-family: var(--font-sans);
+}
+```
+
+## CSS Variables
+
+```css
+:root {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.25 0 0);
+  --card: oklch(1.0 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --primary: oklch(0.50 0.20 250);
+  --primary-foreground: oklch(1.0 0 0);
+  --border: oklch(0.90 0 0);
+  --radius: 0.5rem;
+}
+```
+
+## Accessibility Features
+
+- Semantic HTML5 elements throughout
+- Proper heading hierarchy (h1, h2, h3)
+- Time elements with machine-readable datetime
+- Navigation landmarks for screen readers
+- Skip links to main content

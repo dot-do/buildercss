@@ -4,14 +4,16 @@
   "version": "1.0.0",
   "description": "Semantic HTML templates with pure CSS styling",
   "scripts": {
-    "build": "pnpm -r build",
-    "build:ontology": "npx @tailwindcss/cli -i ./ontology/ontology.css -o ./dist/ontology.css",
-    "build:backgrounds": "mkdir -p dist/backgrounds && cp components/backgrounds/*.js dist/backgrounds/",
-    "dev": "pnpm -r --parallel dev"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.17",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.17",
+    "turbo": "^2.3.3"
   },
   "repository": {
     "type": "git",

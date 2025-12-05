@@ -1,0 +1,82 @@
+{/*
+  Layout.mdx - Semantic page layout wrapper
+
+  A full-page layout with header, main content area, and footer.
+  Uses semantic HTML elements - no classes required.
+
+  Props:
+  - brand: Brand name shown in nav
+  - navItems: Array of {label, href} for navigation links
+  - footerSections: Array of {title, links} for footer columns
+  - socialLinks: Array of {label, href} for social icons
+  - copyright: Copyright text
+  - poweredBy: Optional "powered by" attribution
+  - children: Content to render in <main>
+*/}
+
+export const Layout = ({
+  brand = 'Brand',
+  tagline = '',
+  navItems = [],
+  footerSections = [],
+  socialLinks = [],
+  copyright = '',
+  poweredBy = null,
+  background = null,
+  children
+}) => (
+  <>
+    <header>
+      <nav>
+        <strong>{brand}</strong>
+        {navItems.length > 0 && (
+          <menu>
+            {navItems.map((item, i) => (
+              <li key={i}><a href={item.href}>{item.label}</a></li>
+            ))}
+          </menu>
+        )}
+      </nav>
+    </header>
+
+    <main data-background={background}>
+      {children}
+    </main>
+
+    <footer>
+      <section>
+        <div>
+          <h2>{brand}</h2>
+          {tagline && <p>{tagline}</p>}
+          {socialLinks.length > 0 && (
+            <ul>
+              {socialLinks.map((link, i) => (
+                <li key={i}><a href={link.href} aria-label={link.label}>{link.label}</a></li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {footerSections.map((section, i) => (
+          <article key={i}>
+            <h3>{section.title}</h3>
+            {section.links ? (
+              <ul>
+                {section.links.map((link, j) => (
+                  <li key={j}><a href={link.href}>{link.label}</a></li>
+                ))}
+              </ul>
+            ) : section.content}
+          </article>
+        ))}
+      </section>
+
+      <aside>
+        {copyright && <p><small>{copyright}</small></p>}
+        {poweredBy && <p><small>{poweredBy}</small></p>}
+      </aside>
+    </footer>
+  </>
+)
+
+export default Layout

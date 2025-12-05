@@ -1,0 +1,189 @@
+{/* Sections.mdx */}
+import { Meta, Canvas, Story } from '@storybook/blocks'
+import * as HeroStories from './Hero.stories'
+import * as FeaturesStories from './Features.stories'
+import * as CTAStories from './CTA.stories'
+import * as FAQStories from './FAQ.stories'
+import * as TestimonialsStories from './Testimonials.stories'
+import * as PricingStories from './Pricing.stories'
+
+<Meta title="Sections/Documentation" />
+
+# Section Components
+
+Reusable section components for building landing pages and marketing sites. All sections use semantic HTML with `aria-label` attributes for accessibility.
+
+## Hero Section
+
+The hero section is the first thing visitors see. Use it to capture attention and communicate your main value proposition.
+
+<Canvas of={HeroStories.Default} />
+
+### HTML Structure
+
+```html
+<section aria-label="Hero">
+  <small>Tagline</small>
+  <h1>Main Headline</h1>
+  <p>Supporting description text</p>
+  <form>
+    <input type="email" placeholder="Enter your email" />
+    <button type="submit">Get Started</button>
+  </form>
+  <aside>
+    <small>Social proof text</small>
+  </aside>
+</section>
+```
+
+## Features Section
+
+Display your product features or benefits in a grid layout.
+
+<Canvas of={FeaturesStories.Default} />
+
+### HTML Structure
+
+```html
+<section aria-label="Features">
+  <header>
+    <h2>Features</h2>
+    <p>Description text</p>
+  </header>
+  <div>
+    <article>
+      <figure><!-- Icon --></figure>
+      <h3>Feature Name</h3>
+      <p>Feature description</p>
+    </article>
+    <!-- More features -->
+  </div>
+</section>
+```
+
+## Call to Action (CTA)
+
+Drive conversions with a compelling call-to-action section.
+
+<Canvas of={CTAStories.Default} />
+
+### HTML Structure
+
+```html
+<section aria-label="Call to action">
+  <h2>Ready to get started?</h2>
+  <p>Supporting text</p>
+  <div>
+    <a href="/signup">Primary CTA</a>
+    <a href="/contact">Secondary CTA</a>
+  </div>
+</section>
+```
+
+## FAQ Section
+
+Use the native `<details>` and `<summary>` elements for accessible, interactive FAQs.
+
+<Canvas of={FAQStories.Default} />
+
+### HTML Structure
+
+```html
+<section aria-label="FAQ">
+  <header>
+    <h2>Frequently Asked Questions</h2>
+    <p>Description</p>
+  </header>
+  <div>
+    <details>
+      <summary>Question text?</summary>
+      <p>Answer text</p>
+    </details>
+    <!-- More questions -->
+  </div>
+</section>
+```
+
+## Testimonials Section
+
+Build trust with customer testimonials.
+
+<Canvas of={TestimonialsStories.Default} />
+
+### HTML Structure
+
+```html
+<section aria-label="Testimonials">
+  <header>
+    <h2>What our customers say</h2>
+  </header>
+  <div>
+    <blockquote>
+      <p>"Quote text"</p>
+      <footer>
+        <img src="avatar.jpg" alt="Name" />
+        <cite>
+          <strong>Name</strong>
+          <span>Role</span>
+        </cite>
+      </footer>
+    </blockquote>
+    <!-- More testimonials -->
+  </div>
+</section>
+```
+
+## Pricing Section
+
+Display pricing plans with feature lists.
+
+<Canvas of={PricingStories.Default} />
+
+### HTML Structure
+
+```html
+<section aria-label="Pricing">
+  <header>
+    <h2>Pricing</h2>
+    <p>Description</p>
+  </header>
+  <div>
+    <article class="featured">
+      <h3>Plan Name</h3>
+      <p class="price">$29<span>/month</span></p>
+      <ul>
+        <li>Feature 1</li>
+        <li>Feature 2</li>
+      </ul>
+      <a href="/signup">Get Started</a>
+    </article>
+    <!-- More plans -->
+  </div>
+</section>
+```
+
+## CSS Variables
+
+All sections use the same CSS custom properties for consistent theming:
+
+```css
+:root {
+  --background: oklch(1.0 0 0);
+  --foreground: oklch(0.25 0 0);
+  --primary: oklch(0.55 0.20 250);
+  --primary-foreground: oklch(1.0 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --border: oklch(0.90 0 0);
+  --spacing-4: 1rem;
+  --spacing-8: 2rem;
+  --spacing-16: 4rem;
+  --radius-md: 0.375rem;
+}
+```
+
+## Accessibility
+
+- All sections use `aria-label` for screen reader identification
+- FAQ uses native `<details>`/`<summary>` for keyboard accessibility
+- Color contrast meets WCAG AA standards
+- Semantic HTML provides implicit ARIA roles

@@ -1,0 +1,472 @@
+/* Section components styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors - Light Mode */
+  --background: oklch(1.0 0 0);
+  --foreground: oklch(0.25 0 0);
+  --card: oklch(0.98 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --primary: oklch(0.55 0.20 250);
+  --primary-foreground: oklch(1.0 0 0);
+  --border: oklch(0.90 0 0);
+
+  /* Spacing */
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+
+  /* Typography */
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --background: oklch(0.15 0 0);
+  --foreground: oklch(0.92 0 0);
+  --card: oklch(0.20 0 0);
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --border: oklch(0.30 0 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: oklch(0.15 0 0);
+    --foreground: oklch(0.92 0 0);
+    --card: oklch(0.20 0 0);
+    --muted: oklch(0.25 0 0);
+    --muted-foreground: oklch(0.65 0 0);
+    --border: oklch(0.30 0 0);
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  background: var(--background);
+  line-height: 1.6;
+}
+
+/* Hero Section */
+section[aria-label="Hero"] {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section[aria-label="Hero"] small {
+  display: block;
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: var(--spacing-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-sm);
+}
+
+section[aria-label="Hero"] h1 {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-4);
+  letter-spacing: -0.02em;
+}
+
+section[aria-label="Hero"] > p {
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+}
+
+section[aria-label="Hero"] form {
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Hero"] input {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--text-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--foreground);
+  outline: none;
+  min-width: 280px;
+}
+
+section[aria-label="Hero"] input:focus {
+  border-color: var(--primary);
+}
+
+section[aria-label="Hero"] button {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--text-base);
+  font-weight: 600;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+section[aria-label="Hero"] aside {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+/* Features Section */
+section[aria-label="Features"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--card);
+}
+
+section[aria-label="Features"] > header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--spacing-12);
+}
+
+section[aria-label="Features"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Features"] > header p {
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+}
+
+section[aria-label="Features"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section[aria-label="Features"] article {
+  text-align: center;
+  padding: var(--spacing-4);
+}
+
+section[aria-label="Features"] article figure {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--spacing-4);
+  background: var(--primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-foreground);
+  font-size: var(--text-xl);
+}
+
+section[aria-label="Features"] article h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-2);
+}
+
+section[aria-label="Features"] article p {
+  color: var(--muted-foreground);
+  font-size: var(--text-base);
+}
+
+/* CTA Section */
+section[aria-label="Call to action"] {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+section[aria-label="Call to action"] h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Call to action"] p {
+  font-size: var(--text-lg);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section[aria-label="Call to action"] div {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+section[aria-label="Call to action"] a {
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: var(--text-base);
+  transition: opacity 0.2s;
+}
+
+section[aria-label="Call to action"] a:first-child {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+section[aria-label="Call to action"] a:last-child {
+  border: 2px solid currentColor;
+  color: inherit;
+}
+
+section[aria-label="Call to action"] a:hover {
+  opacity: 0.9;
+}
+
+/* FAQ Section */
+section[aria-label="FAQ"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section[aria-label="FAQ"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="FAQ"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="FAQ"] > header p {
+  color: var(--muted-foreground);
+  font-size: var(--text-lg);
+}
+
+section[aria-label="FAQ"] details {
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-4) 0;
+}
+
+section[aria-label="FAQ"] summary {
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section[aria-label="FAQ"] summary::after {
+  content: '+';
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+}
+
+section[aria-label="FAQ"] details[open] summary::after {
+  content: '-';
+}
+
+section[aria-label="FAQ"] details p {
+  padding-top: var(--spacing-4);
+  color: var(--muted-foreground);
+}
+
+/* Testimonials Section */
+section[aria-label="Testimonials"] {
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--card);
+}
+
+section[aria-label="Testimonials"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Testimonials"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Testimonials"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section[aria-label="Testimonials"] blockquote {
+  background: var(--background);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+section[aria-label="Testimonials"] blockquote p {
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-4);
+  line-height: 1.6;
+}
+
+section[aria-label="Testimonials"] blockquote footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+section[aria-label="Testimonials"] blockquote footer img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+section[aria-label="Testimonials"] blockquote cite {
+  font-style: normal;
+}
+
+section[aria-label="Testimonials"] blockquote cite strong {
+  display: block;
+  font-weight: 600;
+}
+
+section[aria-label="Testimonials"] blockquote cite span {
+  color: var(--muted-foreground);
+  font-size: var(--text-sm);
+}
+
+/* Pricing Section */
+section[aria-label="Pricing"] {
+  padding: var(--spacing-16) var(--spacing-4);
+}
+
+section[aria-label="Pricing"] > header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+section[aria-label="Pricing"] > header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Pricing"] > header p {
+  color: var(--muted-foreground);
+  font-size: var(--text-lg);
+}
+
+section[aria-label="Pricing"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-8);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+section[aria-label="Pricing"] article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  text-align: center;
+}
+
+section[aria-label="Pricing"] article.featured {
+  border-color: var(--primary);
+  position: relative;
+}
+
+section[aria-label="Pricing"] article.featured::before {
+  content: 'Popular';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+section[aria-label="Pricing"] article h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-bottom: var(--spacing-2);
+}
+
+section[aria-label="Pricing"] article .price {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+}
+
+section[aria-label="Pricing"] article .price span {
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+section[aria-label="Pricing"] article ul {
+  list-style: none;
+  margin-bottom: var(--spacing-6);
+  text-align: left;
+}
+
+section[aria-label="Pricing"] article li {
+  padding: var(--spacing-2) 0;
+  color: var(--muted-foreground);
+}
+
+section[aria-label="Pricing"] article li::before {
+  content: '✓';
+  color: var(--primary);
+  margin-right: var(--spacing-2);
+}
+
+section[aria-label="Pricing"] article a {
+  display: block;
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
