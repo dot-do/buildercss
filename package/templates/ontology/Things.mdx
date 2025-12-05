@@ -1,30 +1,30 @@
-export const meta = {
-  $type: 'Component',
-  $id: 'https://mdx.org.ai/templates/ontology/Things',
-  name: 'Things',
-  description: `Directory/card list view displaying multiple ontology entities using semantic HTML:
-- h1: Page title
-- p (first): Page description
-- section: Category groupings
-- h2: Category headers
-- article: Entity cards with links`,
-  props: {
-    title: 'Page title displayed at the top of the directory view',
-    description: 'Optional description text displayed below the title',
-    categories: {
-      name: 'Category name displayed as a section header',
-      description: 'Optional description for this category',
-      entities: [
-        { name: 'Entity name (e.g., "Business", "Product")' },
-        { href: 'URL path to the entity detail page' },
-        { description: 'Brief description of the entity' },
-        { icon: 'Optional emoji or icon identifier' },
-        { propertyCount: 'Number of properties defined on this entity' },
-        { relationshipCount: 'Number of relationships this entity has' },
-      ],
-    },
-  },
-}
+---
+$type: Component
+$id: https://mdx.org.ai/templates/ontology/Things
+name: Things
+description: |
+  Directory/card list view displaying multiple ontology entities using semantic HTML:
+  - h1: Page title
+  - p (first): Page description
+  - section: Category groupings
+  - h2: Category headers
+  - article: Entity cards with links
+
+props:
+  title: Page title displayed at the top of the directory view
+  description: Optional description text displayed below the title
+
+  categories:
+    name: Category name displayed as a section header
+    description: Optional description for this category
+    entities:
+      - name: Entity name (e.g., "Business", "Product")
+      - href: URL path to the entity detail page
+      - description: Brief description of the entity
+      - icon: Optional emoji or icon identifier
+      - propertyCount: Number of properties defined on this entity
+      - relationshipCount: Number of relationships this entity has
+---
 
 export default function Things({ title, description, categories }) {
   return (

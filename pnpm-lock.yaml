@@ -459,9 +459,9 @@ importers:
 
   storybook:
     dependencies:
-      buildercss:
+      '@buildercss/core':
         specifier: workspace:*
-        version: link:..
+        version: link:../package
       react:
         specifier: ^19.0.0
         version: 19.2.1

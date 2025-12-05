@@ -1,42 +1,43 @@
-export const meta = {
-  $type: 'Component',
-  $id: 'https://mdx.org.ai/templates/ontology/Thing',
-  name: 'Thing',
-  description: `Detail view for a single ontology entity using semantic HTML:
-- h1: Entity name
-- p (first): Entity description
-- h2: Section headers (Properties, Relationships, etc.)
-- table: Data tables with thead/tbody structure`,
-  props: {
-    name: 'The name of the entity (e.g., "Business", "Product", "Person")',
-    description: 'A brief description of what this entity represents',
-    properties: [
-      { name: 'Property name in camelCase (e.g., "foundedDate")' },
-      { type: 'Data type (e.g., "string", "number", "URL", "boolean")' },
-      { description: 'Human-readable description of the property' },
-    ],
-    relationships: [
-      { name: 'Relationship name in camelCase (e.g., "hasProduct")' },
-      { target: 'The entity type this relationship points to' },
-      { description: 'Human-readable description of the relationship' },
-    ],
-    searches: [
-      { name: 'Search name (e.g., "OKRs", "recentTransactions")' },
-      { parameters: 'Parameters accepted by this search' },
-      { description: 'What this search returns' },
-    ],
-    actions: [
-      { name: 'Action name in camelCase (e.g., "launchProduct")' },
-      { object: 'The type of object this action operates on' },
-      { result: 'The type returned after performing this action' },
-      { description: 'Human-readable description of the action' },
-    ],
-    events: [
-      { name: 'Event name in camelCase (e.g., "productLaunched")' },
-      { description: 'When this event occurs' },
-    ],
-  },
-}
+---
+$type: Component
+$id: https://mdx.org.ai/templates/ontology/Thing
+name: Thing
+description: |
+  Detail view for a single ontology entity using semantic HTML:
+  - h1: Entity name
+  - p (first): Entity description
+  - h2: Section headers (Properties, Relationships, etc.)
+  - table: Data tables with thead/tbody structure
+
+props:
+  name: The name of the entity (e.g., "Business", "Product", "Person")
+  description: A brief description of what this entity represents
+
+  properties:
+    - name: Property name in camelCase (e.g., "foundedDate")
+    - type: Data type (e.g., "string", "number", "URL", "boolean")
+    - description: Human-readable description of the property
+
+  relationships:
+    - name: Relationship name in camelCase (e.g., "hasProduct")
+    - target: The entity type this relationship points to
+    - description: Human-readable description of the relationship
+
+  searches:
+    - name: Search name (e.g., "OKRs", "recentTransactions")
+    - parameters: Parameters accepted by this search
+    - description: What this search returns
+
+  actions:
+    - name: Action name in camelCase (e.g., "launchProduct")
+    - object: The type of object this action operates on
+    - result: The type returned after performing this action
+    - description: Human-readable description of the action
+
+  events:
+    - name: Event name in camelCase (e.g., "productLaunched")
+    - description: When this event occurs
+---
 
 export default function Thing({ name, description, properties, relationships, searches, actions, events }) {
   return (

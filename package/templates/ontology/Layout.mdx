@@ -1,36 +1,33 @@
-export const meta = {
-  $type: 'Layout',
-  $id: 'https://mdx.org.ai/templates/ontology/Layout',
-  name: 'OntologyLayout',
-  description: 'Shared layout with nav sidebar, main content, and TOC aside',
-  props: {
-    logo: {
-      src: 'URL or path to the logo image',
-      alt: 'Alt text for the logo',
-      text: 'Text displayed next to the logo',
-    },
-    sections: {
-      title: 'Section heading above the navigation links',
-      links: [
-        { href: 'URL path for the navigation link' },
-        { label: 'Display text for the link' },
-      ],
-    },
-    toc: [
-      { href: 'Anchor link to the section (e.g., "#properties")' },
-      { label: 'Display text for the TOC entry' },
-    ],
-    promo: {
-      badge: 'Small badge text (e.g., "New")',
-      headline: 'Main headline for the promo',
-      description: 'Supporting description text',
-      cta: {
-        label: 'Call-to-action button text',
-        href: 'Call-to-action button URL',
-      },
-    },
-  },
-}
+---
+$type: Layout
+$id: https://mdx.org.ai/templates/ontology/Layout
+name: OntologyLayout
+description: Shared layout with nav sidebar, main content, and TOC aside
+
+props:
+  logo:
+    src: URL or path to the logo image
+    alt: Alt text for the logo
+    text: Text displayed next to the logo
+
+  sections:
+    title: Section heading above the navigation links
+    links:
+      - href: URL path for the navigation link
+      - label: Display text for the link
+
+  toc:
+    - href: Anchor link to the section (e.g., "#properties")
+    - label: Display text for the TOC entry
+
+  promo:
+    badge: Small badge text (e.g., "New")
+    headline: Main headline for the promo
+    description: Supporting description text
+    cta:
+      label: Call-to-action button text
+      href: Call-to-action button URL
+---
 
 export default function Layout({ logo, sections, toc, promo, children }) {
   return (

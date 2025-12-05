@@ -1,8 +1,8 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import Layout from 'buildercss/templates/ontology/Layout'
-import Thing from 'buildercss/templates/ontology/Thing'
-import 'buildercss/templates/ontology/ontology.css'
+import Layout from '@buildercss/core/templates/ontology/Layout'
+import Thing from '@buildercss/core/templates/ontology/Thing'
+import '@buildercss/core/templates/ontology/ontology.css'
 
 const layoutProps = {
   logo: {
